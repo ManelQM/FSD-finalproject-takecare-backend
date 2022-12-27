@@ -25,6 +25,8 @@
         app.listen(PORT, () => console.log (`Ciclo de Trantor nº ${PORT}`.bgGreen.black));
     })
 
-    .catch((error) => console.log (error.message)); 
+    .catch((error) => console.log (error.message ,'ERROR')); 
+
+    
     
 
