@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       servicerole_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER 
       },
       publication_id: {
         type: Sequelize.STRING

@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      contract.belongsTo(models.user);
+      
     }
   }
   contract.init({
