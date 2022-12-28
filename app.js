@@ -1,32 +1,33 @@
     
     
     const express = require ('express'); 
-    const app = express;
+    const app = express();
+    // const morgan = require('morgan');
     const PORT = process.env.PORT || 3000; // Configuramos puerto 
-    const db = require ('./db.js'); 
-    const router = require ('router.js'); 
+    const db = require ('./db/db'); 
+    const router = require ('./router'); 
+    // const logger = require('./config/winston');
 
 
     // Middleware 
-
+    // app.use(morgan('combined', { stream: logger.stream }));
     app.use(express.json()); 
 
     //Routes
 
-    app.get('/',(req,res) => {res.send('Nice to see you :)');});
     app.use(router); 
 
     //DB Connection 
 
-    db.then(() => {
-
-        // Starting Server
-
-        app.listen(PORT, () => console.log (`Ciclo de Trantor nº ${PORT}`.bgGreen.black));
-    })
-
-    .catch((error) => console.log (error.message ,'ERROR')); 
-
+    app.listen(PORT, () => {
+        console.log (`Videodrome portal nº ${PORT }`);
+        
+        db.then( () => {
+            console.log ('Nice to see you again (DB connected)');
+        }).catch(error => {
+            console.log ('This thing between us its not working: ' + error)
+        }) 
     
+    })
     
 
