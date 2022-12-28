@@ -15,8 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   servicepublication.init({
     servicerole_id: DataTypes.INTEGER,
-    publication: DataTypes.STRING,
-    date: DataTypes.INTEGER
+    publication_id: DataTypes.STRING,
+    sendmessage: DataTypes.STRING,
+    date: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'servicepublication',

@@ -12,7 +12,10 @@ module.exports = {
       servicerole_id: {
         type: Sequelize.INTEGER
       },
-      publication: {
+      publication_id: {
+        type: Sequelize.STRING
+      },
+      sendmessage: {
         type: Sequelize.STRING
       },
       date: {
