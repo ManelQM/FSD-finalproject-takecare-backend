@@ -2,24 +2,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('servicepublications', {
+    await queryInterface.createTable('roles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      servicerole_id: {
-        type: Sequelize.INTEGER 
-      },
-      publication_id: {
-        type: Sequelize.STRING
-      },
-      sendmessage: {
-        type: Sequelize.STRING
-      },
-      date: {
+      role_id: {
         type: Sequelize.INTEGER
+      },
+      namerole: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +26,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('servicepublications');
+    await queryInterface.dropTable('roles');
   }
 };
