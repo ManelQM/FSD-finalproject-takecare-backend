@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      publication.belongsTo(models.user);
+      publication.hasMany(models.contactcaregiver); 
     }
   }
   publication.init({

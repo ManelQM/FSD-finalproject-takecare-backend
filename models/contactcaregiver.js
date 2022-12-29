@@ -11,6 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.user, { 
+        foreignKey: 'filmId' 
+      }); 
+      this.belongsTo(models.publication, { 
+        foreignKey: 'userId' 
+      });
     }
   }
   contactcaregiver.init({
