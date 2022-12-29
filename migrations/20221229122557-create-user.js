@@ -9,6 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+     
       name: {
         type: Sequelize.STRING
       },
@@ -24,14 +25,15 @@ module.exports = {
       age: {
         type: Sequelize.INTEGER
       },
-      roleuser_id: {
-        type: Sequelize.STRING,
+      idrole: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Roles',
           key: 'id'
         }
       },
+    
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

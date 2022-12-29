@@ -12,9 +12,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsTo(models.Role);
-      User.hasMany(models.Publications);
-      User.hasMany(models.Contract);
+      User.belongsTo(models.Role,  {
+        foreignKey: 'idrole'
+      });
+      User.hasMany(models.Publications, {
+        foreignKey: 'user_id'
+      });
+      User.hasMany(models.Contract, {
+        foreignKey: 'user_id'
+      });
       User.belongsToMany(models.Services);
     }
   }
@@ -41,8 +47,8 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       surname: DataTypes.STRING,
       age: DataTypes.INTEGER,
-      roleuser_id: {
-      type: DataTypes.STRING,
+      idrole: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     }
     

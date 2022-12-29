@@ -11,8 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Contract.belongsTo(models.user);
-      Contract.belongsTo(models.services);
+      Contract.belongsTo(models.User, {
+        foreignKey: 'user_id'
+      });
+      Contract.belongsTo(models.Services,{
+        foreignKey: 'service_id'
+      });
     }
   }
   Contract.init({

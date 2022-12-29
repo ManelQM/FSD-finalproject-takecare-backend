@@ -9,8 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      usercaregiver_id: {
-        type: Sequelize.INTEGER
+      publication_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Publications',
+          key: 'id'
+        }
       },
       title: {
         type: Sequelize.STRING
