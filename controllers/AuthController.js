@@ -1,5 +1,5 @@
     
-    const { user } = require('../models/index');
+    const models = require("../models/index");
     const {
         assertValidPasswordService,
         assertEmailIsValidService,
@@ -73,7 +73,28 @@
 
             const secret = process.env.JWT_SECRET;
             if(secret.length < 10) {
-                  
+                throw new Error("JwtSecret error");
             }
+
+            const jwt =jsonwebtoken.sign({
+                name:userTarget.name,
+                id:userTarget.id_user,
+                email:userTarget.email,
+                nickname:userTarget.nickname,
+                role:userTarget.idrole,
+
+            }, secret);
+            res.status(200).json({
+                message:"Login with success",
+                jwt:jwt,
+            });
+         }catch(error) {
+            res.send(error);
          }
-    }
+    };
+
+    module.exports = {
+        authLoginController,
+        authRegisterController,
+      };
+      

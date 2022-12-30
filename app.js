@@ -30,7 +30,7 @@
     //DB Connection 
 
     app.listen(PORT, () => {
-        console.log (`Videodrome portal nº ${PORT }`);
+        console.log (`Welcome to TakeCare at Port ${PORT }`);
         
         db.then( () => {
             console.log ('Nice to see you again (DB connected)');
