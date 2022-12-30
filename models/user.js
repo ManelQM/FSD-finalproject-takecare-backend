@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Contract, {
         foreignKey: 'user_id'
       });
-      User.belongsToMany(models.Services);
+      User.belongsToMany(models.Services, {through:'Contract'});
     }
   }
   User.init(

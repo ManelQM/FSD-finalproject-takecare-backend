@@ -14,7 +14,7 @@
     //User access privileges
 
     router.get('/email',isValidUser(),UsersController.getDataProfile);
-    router.patch('/update',isValidRole,UsersController,updateUser); 
+    router.patch('/update',isValidRole,UsersController.updateUser); 
     
     
     

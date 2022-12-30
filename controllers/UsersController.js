@@ -23,7 +23,19 @@
         res.send(resp);
     };
 
-   UsersController.updateUser = async (req,res) => {
+
+    // Role:User-My data Profile
+    UsersController.getDataProfile = async (req,res) => {
+    let {email} = req.params;
+    let resp = await models.User.findAll({
+        where: {email:email},
+    });
+    res.send(resp);
+   } ;
+
+
+   // Role:User-Update profile
+    UsersController.updateUser = async (req,res) => {
     const user = req.body;
     const userTarget = await models.User.findOne({
         where: {
@@ -55,4 +67,16 @@
 
 
 
+    //Role:Admin-Delete user
+
+    UsersController.destroyUser = async (req,res) => {
+        const {email} = req.body;
+        let resp = await models.User.destroyer(
+            {deleted:true},
+            {where:{email:email}}
+        );
+        res.json({resp,message: "Deleted user!"})
+    }
+
+    
     module.exports = UsersController; 

@@ -5,7 +5,7 @@
        
 
     // Middlewares
-    const auth = require('./middlewares/auth');
+    const {authBearerMiddleware} = require("./middlewares/authMiddleware")
 
     //Importamos Routes definidas en views
     // const MovieRouter = require('./views/MovieRouter');
@@ -18,5 +18,6 @@
     router.use('/users', UsersRouter); //Login and register routes
     // router.use('/movies',auth, MovieRouter); //add auth
     // router.use('/categories',auth, CategoryRouter);
+    router.use(authBearerMiddleware)
 
     module.exports = router;
