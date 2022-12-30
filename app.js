@@ -4,14 +4,28 @@
     const router = require ('./router.js'); 
     const app = express();
     const PORT = process.env.PORT || 3000; // Configuramos puerto 
+    const cors = require("cors");
+  
 
     // Middleware 
-   
+    
+    app.use(cors(corsOptions));
     app.use(express.json()); 
 
     //Routes
 
     app.use(router); 
+
+
+    //Config Cors Options
+    var corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    };
+
+
 
     //DB Connection 
 
