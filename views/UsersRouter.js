@@ -1,9 +1,7 @@
 
-
     const express = require('express');
     const router = express.Router();
-
-    router.post('/signin', AuthController.signIn);
-    router.post('/signup', AuthController.signUp);
+    const {authBeareMiddleware}
+   
     
     module.exports = router;
