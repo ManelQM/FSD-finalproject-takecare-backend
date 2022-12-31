@@ -1,25 +1,65 @@
-'use strict';
+   
+   'use strict';
+    const bcrypt = require('bcrypt');
+    const authConfig = require('../config/auth');
+    /** @type {import('sequelize-cli').Migration} */
+    module.exports = {
+      async up (queryInterface, Sequelize) {
+        await queryInterface.bulkInsert('Users', [{
+          name: "Chiquito",
+          email: "jarenauer@gmail.com",
+          password: bcrypt.hashSync("fistro", Number.parseInt(authConfig.rounds)),
+          idrole: 1,
+          },
+          {
+          name:"Russell",
+          email: "principiamathematica@gmail.com",
+          password: bcrypt.hashSync("logicalatomism", Number.parseInt(authConfig.rounds)),
+          idrole: 2,
+          },
+          {
+          name: "Putin",
+          email: "dontpressthebutton@gmail.com",
+          password:  bcrypt.hashSync("holydaysinsiberia", Number.parseInt(authConfig.rounds)),
+          idrole: 2,
+          },
+          {
+          name: "Schopenhauer",
+          email: "worldofwill@gmail.com",
+          password:  bcrypt.hashSync("mahabharata", Number.parseInt(authConfig.rounds)),
+          idrole: 2
+          }, 
+          {
+          name: "Freud",
+          email: "pulsions@gmail.com",
+          password: bcrypt.hashSync("dreamsarereal", Number.parseInt(authConfig.rounds)),
+          idrole: 2,
+          },
+          {
+          name: "Mrajoy",
+          email: "aguantaluis@gmail.com",
+          password:  bcrypt.hashSync("1234", Number.parseInt(authConfig.rounds)),
+          idrole: 2,
+          },
+          {
+          name: "Newton",
+          email: "atoms@gmail.com",
+          password:  bcrypt.hashSync("apple", Number.parseInt(authConfig.rounds)),
+          idrole: 2,
+          },
+          {
+          name: "Dostoyevsky",
+          email: "crimeandpunishment@gmail.com",
+          password: bcrypt.hashSync("brainfever", Number.parseInt(authConfig.rounds)),
+          idrole: 2,
+          }
+          ], {});
+        
+      },
+      
 
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-  },
-
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
-};
+      async down (queryInterface, Sequelize) {
+      
+        await queryInterface.bulkDelete('Users', null, {});
+      }
+    };

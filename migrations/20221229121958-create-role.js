@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Roles', {
-      id: {
+      id_role: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -12,14 +12,7 @@ module.exports = {
       rolename: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+
     });
   },
   async down(queryInterface, Sequelize) {

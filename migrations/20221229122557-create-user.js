@@ -30,18 +30,12 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'Roles',
-          key: 'id'
-        }
+          key: 'id_role',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
-    
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+
     });
   },
   async down(queryInterface, Sequelize) {
