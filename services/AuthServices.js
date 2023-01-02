@@ -43,7 +43,7 @@
         };
 
         // Service to encrypt a password and create a hash of said password
-        const encryptPasswordService = (pass) => {
+        const passwordServiceEncrypt = (pass) => {
         const hash = crypto.createHmac("sha512", "").update(pass).digest("base64");
         return hash;
         };
@@ -73,6 +73,6 @@
         assertValidPasswordService,
         assertEmailIsValidService,
         assertEmailIsUniqueService,
-        encryptPasswordService,
+        passwordServiceEncrypt,
         createUserService,
         };
