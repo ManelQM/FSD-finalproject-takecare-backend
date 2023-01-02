@@ -14,8 +14,8 @@
         //Routers
         router.use('/users', UsersRouter); //User Routers
         router.use('/publications', PublicationsRouter); // Publications Routers
-        router.use('/contracts', ContractsRouter);
-        router.use('/services',ServicesRouter);
+        // router.use('/contracts', ContractsRouter);
+        // router.use('/services',ServicesRouter);
         router.use('/auth',AuthRouter);
         router.use(authBearerMiddleware);
 

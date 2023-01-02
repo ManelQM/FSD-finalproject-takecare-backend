@@ -9,7 +9,7 @@
     } = require("../services/AuthServices");
     require("dotenv").config();
     
-    const jsonwebtoken = requier("jsonwebtoken");
+    const jsonwebtoken = require("jsonwebtoken");
 
     const authRegisterController = async (req,res) => {
         

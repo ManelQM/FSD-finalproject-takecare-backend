@@ -12,11 +12,11 @@
         } = require('../controllers/PublicationsController'); 
 
         router.post("/publications/newpublication",createPublication);
-        router.delete("/publications/delete",deletePublication);
-        router.patch("/publications/updatepublication",updateMyPublication);
-        router.get("/publications/mypublications",getMyPublications);
-        router.get("/publications/all",getAllPublications);
-        router.delete("/publications/deleteallmy",deleteAllMyPublications);
+        // router.delete("/publications/delete",deletePublication);
+        // router.patch("/publications/updatepublication",updateMyPublication);
+        // router.get("/publications/mypublications",getMyPublications);
+        // router.get("/publications/all",getAllPublications);
+        // router.delete("/publications/deleteallmy",deleteAllMyPublications);
 
 
         module.exports = router;
