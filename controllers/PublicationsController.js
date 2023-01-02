@@ -23,3 +23,14 @@
             }
         };
 
+        PublicationsController.updateMyPublication = async (req,res) => {
+            try {
+                const publication =req.body; 
+                await models.publication.update(
+                    {
+                        
+                    }
+                )
+            }
+        }
+        
