@@ -1,8 +1,8 @@
 
-    const UsersController ={};
+   
     const models = require ("../models/index");
     const {passwordServiceEncrypt} = require ("../services/AuthServices");
-
+    const UsersController ={};
 
     UsersController.getAllUsers = async (req,res) => {
          let resp = await models.User.findAll(

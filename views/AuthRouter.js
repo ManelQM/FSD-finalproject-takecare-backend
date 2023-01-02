@@ -8,7 +8,7 @@
     } = require("../controllers/AuthController");
 
     router.post ("/users/login", authLoginController);
-    router.post("/register", authRegisterController);
+    router.post("/users/register", authRegisterController);
 
     module.exports = router; 
 
