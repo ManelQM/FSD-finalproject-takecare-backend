@@ -1,23 +1,22 @@
-    
-    const router = require('express').Router();
-   
+        
+        const router = require('express').Router();
 
-       
+        // Middlewares
+        const {authBearerMiddleware} = require("./middlewares/authMiddleware")
 
-    // Middlewares
-    const {authBearerMiddleware} = require("./middlewares/authMiddleware")
+        //Views 
+        const UsersRouter = require('./views/UsersRouter');
+        const PublicationsRouter = require('./views/PublicationsRouter');
+        const ContractsRouter = require('./views/ContractsRouter');
+        const ServicesRouter = require('./views/ServicesRouter');
+        const AuthRouter = require('./views/AuthRouter');
 
-    //Importamos Routes definidas en views
-    // const MovieRouter = require('./views/MovieRouter');
-    // const CategoryRouter = require('./views/CategoryRouter');
-    const UsersRouter = require('./views/UsersRouter');
-       
+        //Routers
+        router.use('/users', UsersRouter); //User Routers
+        router.use('/publications', PublicationsRouter); // Publications Routers
+        router.use('/contracts', ContractsRouter);
+        router.use('/services',ServicesRouter);
+        router.use('/auth',AuthRouter);
+        router.use(authBearerMiddleware);
 
-
-    //Rutas
-    router.use('/users', UsersRouter); //Login and register routes
-    // router.use('/movies',auth, MovieRouter); //add auth
-    // router.use('/categories',auth, CategoryRouter);
-    router.use(authBearerMiddleware)
-
-    module.exports = router;
+        module.exports = router;
