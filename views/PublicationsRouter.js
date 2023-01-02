@@ -15,8 +15,8 @@
         router.post("/publications/newpublication",createPublication);
         router.patch("/publications/updatepublication",updateMyPublication);
         router.delete("/publications/delete",deletePublication);
-        // router.get("/publications/mypublications",getMyPublications);
-        // router.get("/publications/all",getAllPublications);
+        router.get("/publications/mypublications",getMyPublications);
+        router.get("/publications/all",getAllPublications);
         // router.delete("/publications/deleteallmy",deleteAllMyPublications);
 
 

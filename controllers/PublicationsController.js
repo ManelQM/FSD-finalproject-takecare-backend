@@ -74,5 +74,29 @@
             }
         }
 
+        PublicationsController.getMyPublications = async (req,res) => {
+            try {
+                let publications = await models.publications.findAll({
+                    where: {
+                        user_id: req.auth.id,
+                    },
+                });
+                 res.json ({
+                    message: "Here we have all your publications",
+                    publications,
+                 });
+            }catch (error) {
+                console.error(error);
+            }
+        };
         
+        PublicationsController.getAllPublications = async (req,res) => {
+            try {
+                const publications = await models.publications.findAll();
+                res.json({message: "All the publications list", publications});
+            }catch (error) {
+                console.error(error);
+            }
+        }
+
         module.exports = PublicationsController;

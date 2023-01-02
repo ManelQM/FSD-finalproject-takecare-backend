@@ -6,13 +6,12 @@
 
         
         UsersController.getAllUsers = async (req,res) => {
-            let resp = await models.User.findAll(
-                {where:{deleted:false,
-                        rolename:"user"  
-                    },
-                }
-            );
-            res.send(resp);
+            try {
+                const users = await models.users.findAll();
+                res.json({message:"Founded Users", users});
+            }catch (error){
+                console.error(error);
+            }
         };
 
         UsersController.getAllDeletedUsers = async (req,res) => {
