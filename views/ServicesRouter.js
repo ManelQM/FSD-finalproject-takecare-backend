@@ -2,12 +2,12 @@
         const express = require('express');
         const router = express.Router();
         const ServicesController = require('../controllers/ServicesController'); 
-        const {isValidRole,authBearerMiddleware,} = require("../middlewares/AuthMiddleware");
+        const {isValidRole,isValidUser,authBearerMiddleware,} = require("../middlewares/AuthMiddleware");
 
         
-        router.get('/services/allmyservices');
-        router.patch('/services/updateservice');
-        router.get('/services/bycontract');
-        router.delete('/services/delete'); 
+        router.get('/services/allmyservices', isValidUser(),ServicesController.allMyServices);
+        router.patch('/services/updateservice',isValidUser(),ServicesController.updateService);
+        router.get('/services/bycontract',isValidUser(),ServicesController.servicesByContract);
+        router.delete('/services/delete',isValidRole(1),ServicesController.deleteService ); 
 
         module.exports = router; 
