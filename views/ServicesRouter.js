@@ -8,6 +8,6 @@
         router.get('/services/allmyservices', isValidUser(),allMyServices);
         router.patch('/services/updateservice',isValidUser(),updateService);
         // router.get('/services/bycontract',isValidUser(),servicesByContract);
-        // router.delete('/services/delete',isValidRole(1),deleteService ); 
+        router.delete('/services/delete',isValidRole(1),deleteService ); 
 
         module.exports = router; 
