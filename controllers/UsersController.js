@@ -1,7 +1,7 @@
 
         const models = require ("../models/index");
         const {passwordServiceEncrypt} = require ("../services/AuthServices");
-        const UsersController ={};
+        const UsersController = {};
         require("dotenv").config();
 
         
