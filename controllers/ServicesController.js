@@ -20,7 +20,7 @@
 
         const updateService = async (req,res) => {
             try {
-                let servicesupdate = req.body.services;
+                let servicesupdate = req.body.service;
                 const services = await models.services.findOne({
                     where:{
                         id:servicesupdate,
@@ -49,10 +49,37 @@
             }
         };
 
+        const deleteService = async (req,res) => {
+            try {
+                let destroyService = req.body.service;
+                const service = await models.services.findOne({
+                    where: {
+                        id:destroyService,
+                    },
+                });
+                if (service.publication_id !== req.auth.id) {
+                    res.json({
+                        message: "Cant delete the Service"
+                    });
+                } else {
+                    await models.services.destroy({
+                        where: {
+                            id:destroyService,
+                        },
+                    });
+                    res.json({
+                        message: "Service deleted with success",
+                    });
+                }
+            }catch (error) {
+                console.error(error);
+            }
+        };
+
   
         module.exports = {
             allMyServices,
             updateService,
             // servicesByContract,
-            // deleteServices
+            deleteService
         };
