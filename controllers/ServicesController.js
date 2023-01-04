@@ -77,9 +77,4 @@
         };
 
   
-        module.exports = {
-            allMyServices,
-            updateService,
-            // servicesByContract,
-            deleteService
-        };
+        module.exports = {allMyServices,updateService,deleteService};

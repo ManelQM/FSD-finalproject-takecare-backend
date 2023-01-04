@@ -1,11 +1,9 @@
 
         const models = require ("../models/index");
         const {passwordServiceEncrypt} = require ("../services/AuthServices");
-        const UsersController = {};
         require("dotenv").config();
 
-        
-        UsersController.getAllUsers = async (req,res) => {
+        const getAllUsers = async (req,res) => {
             try {
                 const users = await models.users.findAll();
                 res.json({message:"Founded Users", users});
@@ -14,7 +12,7 @@
             }
         };
 
-        UsersController.getAllDeletedUsers = async (req,res) => {
+        const getAllDeletedUsers = async (req,res) => {
             let resp = await models.User.findAll ({
                 where: {
                     deleted: true,
@@ -25,7 +23,7 @@
 
 
         // Role:User-My data Profile
-        UsersController.getDataProfile = async (req,res) => {
+        const getDataProfile = async (req,res) => {
         let {email} = req.params;
         let resp = await models.User.findAll({
             where: {email:email},
@@ -35,7 +33,7 @@
 
 
         // Role:User-Update profile
-        UsersController.updateUser = async (req,res) => {
+        const updateUser = async (req,res) => {
         const user = req.body;
         const userTarget = await models.User.findOne({
             where: {
@@ -69,7 +67,7 @@
 
         //Role:Admin-Delete user
 
-        UsersController.destroyUser = async (req,res) => {
+        const destroyUser = async (req,res) => {
             const {email} = req.body;
             let resp = await models.User.destroyer(
                 {deleted:true},
@@ -79,4 +77,4 @@
         }
 
         
-        module.exports = UsersController; 
+        module.exports = {getAllUsers,getAllDeletedUsers,destroyUser,getDataProfile,updateUser};
