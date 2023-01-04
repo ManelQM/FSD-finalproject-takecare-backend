@@ -2,7 +2,13 @@
         const express = require('express');
         const router = express.Router();
         const {authBeareMiddleware, isValidUser, isValidUserId, isValidRole,} = require('../middlewares/authMiddleware');
-        const {getAllUsers,getAllDeletedUsers,destroyUser,getDataProfile,updateUser} = require('../controllers/UsersController');
+        const {
+        getAllUsers,
+        getAllDeletedUsers,
+        destroyUser,
+        getDataProfile,
+        updateUser
+        } = require('../controllers/UsersController');
 
         // Admin access privileges
 

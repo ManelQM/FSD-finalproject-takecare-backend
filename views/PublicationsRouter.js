@@ -2,13 +2,13 @@
         const express = require('express');
         const router = express.Router();
         const {isValidRole, isValidUser} = require('../middlewares/authMiddleware');
-        const {
+            const {
             createPublication,
             updateMyPublication,
             deletePublication,
             getMyPublications,
             getAllPublications,
-        } = require('../controllers/PublicationsController'); 
+            } = require('../controllers/PublicationsController'); 
 
         router.post("/publications/newpublication",createPublication);
         router.patch("/publications/updatepublication",updateMyPublication);

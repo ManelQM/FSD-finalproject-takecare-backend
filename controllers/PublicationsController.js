@@ -2,9 +2,9 @@
         const models = require ('../models/index');
         require("dotenv").config();
         // const { Op } = require("sequelize");
-        const PublicationsController = {} ; 
+        
 
-        PublicationsController.createPublication = async (req,res) => {
+        const createPublication = async (req,res) => {
             
             try{
                 const publication = req.body;
@@ -23,7 +23,7 @@
             }
         };
 
-        PublicationsController.updateMyPublication = async (req,res) => {
+        const updateMyPublication = async (req,res) => {
             try {
                 const publication =req.body; 
                 await models.publication.update(
@@ -47,7 +47,7 @@
             }
         }
 
-        PublicationsController.deletePublication = async (req,res) => {
+        const deletePublication = async (req,res) => {
             try{
                 const publicationId = req.body.publication;
                 const publication = await models.publications.findOne ({
@@ -74,7 +74,7 @@
             }
         }
 
-        PublicationsController.getMyPublications = async (req,res) => {
+        const getMyPublications = async (req,res) => {
             try {
                 let publications = await models.publications.findAll({
                     where: {
@@ -90,7 +90,7 @@
             }
         };
         
-        PublicationsController.getAllPublications = async (req,res) => {
+        const getAllPublications = async (req,res) => {
             try {
                 const publications = await models.publications.findAll();
                 res.json({message: "All the publications list", publications});
@@ -99,4 +99,9 @@
             }
         }
 
-        module.exports = PublicationsController;
+            module.exports = {
+            createPublication,
+            updateMyPublication,
+            deletePublication,
+            getMyPublications,
+            getAllPublications};

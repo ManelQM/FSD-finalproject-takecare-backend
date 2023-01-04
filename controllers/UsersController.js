@@ -77,4 +77,9 @@
         }
 
         
-        module.exports = {getAllUsers,getAllDeletedUsers,destroyUser,getDataProfile,updateUser};
+            module.exports = {
+            getAllUsers,
+            getAllDeletedUsers,
+            destroyUser,
+            getDataProfile,
+            updateUser};
