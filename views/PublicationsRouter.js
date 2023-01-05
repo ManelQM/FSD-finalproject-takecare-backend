@@ -10,11 +10,11 @@
             getAllPublications,
             } = require('../controllers/PublicationsController'); 
 
-        router.post("/publications/newpublication",createPublication);
-        router.patch("/publications/updatepublication",updateMyPublication);
-        router.delete("/publications/delete",deletePublication);
-        router.get("/publications/mypublications",getMyPublications);
-        router.get("/publications/all",getAllPublications);
+        router.post("/newpublication",createPublication);
+        router.patch("/updatepublication",updateMyPublication);
+        router.delete("/delete",deletePublication);
+        router.get("/mypublications",getMyPublications);
+        router.get("/all",getAllPublications);
 
 
         module.exports = router;

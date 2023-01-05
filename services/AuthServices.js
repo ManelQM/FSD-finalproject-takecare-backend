@@ -58,7 +58,7 @@
         nickname: userBody.username,
         email: userBody.email,
         password: userBody.password,
-        RoleIdRole: "user",
+        idrole: "user",
         });
         return user;
         };

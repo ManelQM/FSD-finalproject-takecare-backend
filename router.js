@@ -7,7 +7,7 @@
         //Views 
         const UsersRouter = require('./views/UsersRouter');
         const PublicationsRouter = require('./views/PublicationsRouter');
-        const ContractsRouter = require('./views/ContractsRouter');
+        // const ContractsRouter = require('./views/ContractsRouter');
         const ServicesRouter = require('./views/ServicesRouter');
         const AuthRouter = require('./views/AuthRouter');
 
@@ -15,7 +15,7 @@
         router.use('/users', UsersRouter); //User Routers
         router.use('/publications', PublicationsRouter); // Publications Routers
         // router.use('/contracts', ContractsRouter);
-        // router.use('/services',ServicesRouter);
+        router.use('/services',ServicesRouter);
         router.use('/auth',AuthRouter);
         router.use(authBearerMiddleware);
 
