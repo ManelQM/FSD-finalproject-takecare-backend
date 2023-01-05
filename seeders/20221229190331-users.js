@@ -8,7 +8,7 @@
         await queryInterface.bulkInsert('Users', [{
           name: "Chiquito",
           email: "jarenauer@gmail.com",
-          password: bcrypt.hashSync("fistro", Number.parseInt(authConfig.rounds)),
+          password:"fistro",
           idrole: 1,
           },
           {
