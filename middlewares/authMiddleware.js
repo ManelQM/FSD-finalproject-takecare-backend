@@ -10,7 +10,7 @@
       if (token == null) {
         return res
           .status(401)
-          .json({ message: "Not logged, please try to log correctly." });
+          .json({ message: "Not logged, please try to log correctly" });
       }
     
       try {
