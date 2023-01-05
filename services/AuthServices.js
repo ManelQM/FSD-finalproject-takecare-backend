@@ -2,7 +2,7 @@
         const models = require("../models/index");
         const crypto = require("node:crypto");
 
-        // Service to assert if the structure of the password is valid - at least one lowercase, one uppercase and one number, minimum 8 characters
+        // Service to assert if the structure of the password is ok 
         const assertValidPasswordService = (pass) => {
         if (pass.length < 8) {
         throw new Error("Password must be at least 8 characters long");
@@ -43,7 +43,7 @@
         };
 
         // Service to encrypt a password and create a hash of said password
-        const passwordServiceEncrypt = (pass) => {
+        const encryptPasswordService = (pass) => {
         const hash = crypto.createHmac("sha512", "").update(pass).digest("base64");
         return hash;
         };
@@ -67,6 +67,6 @@
         assertValidPasswordService,
         assertEmailIsValidService,
         assertEmailIsUniqueService,
-        passwordServiceEncrypt,
+        encryptPasswordService,
         createUserService,
         };

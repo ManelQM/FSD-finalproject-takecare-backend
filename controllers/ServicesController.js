@@ -1,6 +1,6 @@
         
         const models = require('../models/index');
-        const {passwordServiceEncrypt} = require('../services/AuthServices');
+        const {encryptPasswordService} = require('../services/AuthServices');
         require('dotenv').config();
     
 

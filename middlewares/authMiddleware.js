@@ -3,27 +3,28 @@
 
     //Here is  how the middleware authenticate the User
 
-    const authBearerMiddleware = async (req, res, next) => {
-        
-        const {authorization} = req.headers;
-        try {
-            const [strategy,jwt] = authorization.split("");
-            if(strategy.toLowerCase() !== "bearer") {
-                throw new Error ("Incorrect Strategy");
-            }
 
-            const payload = jsonwebtoken.verify(jwt,"jsonwebtokensecret");
-            req.auth = payload;
-            next();
-
-        } catch (error) {
-            res 
+    const authBearerMiddleware = (req, res, next) => {
+      const authentication = req.headers["authorization"];
+      const token = authentication && authentication.split(" ")[1];
+      if (token == null) {
+        return res
+          .status(401)
+          .json({ message: "Not logged, please try to log correctly." });
+      }
+    
+      try {
+        jsonwebtoken.verify(token, process.env.JWT_TOKEN_SECRET);
+        if (token.exp < Date.now()) {
+          return res
             .status(401)
-            .json({message: "Who are you Sir? Please log your account"});
-            return;
+            .json({ message: "Log in timed out, please log in again" });
         }
-      };
-
+        next();
+      } catch (error) {
+        res.status(400).send({ message: "Invalid token!" });
+      }
+    };
       // Middleware for roles
       const isValidRole = (role) => (req,res,next) => {
 
