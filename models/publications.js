@@ -1,35 +1,53 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Publications extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-      Publications.belongsTo(models.User,  {
-        foreignKey: 'user_id'
+
+    'use strict';
+    const {
+      Model
+    } = require('sequelize');
+    module.exports = (sequelize, DataTypes) => {
+      class Publications extends Model {
+        /**
+         * Helper method for defining associations.
+         * This method is not a part of Sequelize lifecycle.
+         * The `models/index` file will call this method automatically.
+         */
+        static associate(models) {
+          // define association here
+          Publications.belongsTo(models.User,  {
+            foreignKey: 'user_id'
+          });
+          Publications.hasMany(models.Services, {
+            foreignKey: 'publication_id'
+          }) 
+        }
+      }
+      Publications.init({
+        title: {
+         type: DataTypes.STRING,
+         allowNull: false, 
+        },
+        nickname: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        text: {
+          type: DataTypes.STRING,
+          allowNull: false, 
+        },     
+         fulljourney: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false
+         }, 
+        age: DataTypes.INTEGER,
+        childrencare: DataTypes.BOOLEAN,
+        disablecare: DataTypes.BOOLEAN,
+        elderlycare: DataTypes.BOOLEAN, 
+        user_id: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        }
+      }, {
+        sequelize,
+        modelName: 'Publications',
       });
-      Publications.hasMany(models.Services, {
-        foreignKey: 'publication_id'
-      }) 
-    }
-  }
-  Publications.init({
-    user_id: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    nickname: DataTypes.STRING,
-    offeredto: DataTypes.STRING,
-    text: DataTypes.STRING,
-    fulljourney: DataTypes.STRING,
-    age: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Publications',
-  });
-  return Publications;
-};
+      return Publications;
+    };
