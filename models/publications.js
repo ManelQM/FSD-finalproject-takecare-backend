@@ -37,10 +37,10 @@
           type: DataTypes.BOOLEAN,
           allowNull: false
          }, 
-        age: DataTypes.INTEGER,
         childrencare: DataTypes.BOOLEAN,
         disablecare: DataTypes.BOOLEAN,
         elderlycare: DataTypes.BOOLEAN, 
+        age: DataTypes.INTEGER,
         user_id: {
           type: DataTypes.INTEGER,
           allowNull: false,
