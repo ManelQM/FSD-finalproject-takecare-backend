@@ -19,7 +19,7 @@
           },
           {
           name: "Antonio",
-          surname: "Almirante",
+          surname: "Sánchez",
           nickname: "Custom Care S.L",
           email: "antonio@fakemail.com",
           password:bcrypt.hashSync("Antonio12345", Number.parseInt(authConfig.rounds)),
