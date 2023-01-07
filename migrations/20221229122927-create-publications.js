@@ -25,7 +25,7 @@
             type: Sequelize.STRING
           },
           age: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
           },
           text: {
             type: Sequelize.STRING

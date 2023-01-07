@@ -28,7 +28,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       age: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       city: {
         type: Sequelize.STRING

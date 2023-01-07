@@ -52,7 +52,7 @@
           surname: DataTypes.STRING,
           city: DataTypes.STRING,
           avatar: DataTypes.STRING,
-          age: DataTypes.INTEGER,
+          age: DataTypes.STRING,
           caregiver: DataTypes.BOOLEAN,
           idrole: {
           type: DataTypes.INTEGER,
