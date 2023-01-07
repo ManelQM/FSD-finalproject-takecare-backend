@@ -27,7 +27,7 @@
       }
       User.init(
         {
-          id_user: {
+          id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -61,6 +61,7 @@
       }, {
         sequelize,
         modelName: 'User',
+        timestamps: false,
       });
       return User;
     };

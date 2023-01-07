@@ -33,7 +33,7 @@
 
         // Service to assert if the email is already registered
         const assertEmailIsUniqueService = async (email) => {
-        const user = await models.Users.findOne({
+        const user = await models.User.findOne({
         where: { email: email },
         });
         if (user && user.deleted == false) {
@@ -53,12 +53,12 @@
         const hash = encryptPasswordService(userBody.password);
         userBody.password = hash;
 
-        const user = await models.Users.create({
+        const user = await models.User.create({
         name: userBody.name,
-        nickname: userBody.username,
+        nickname: userBody.nickname,
         email: userBody.email,
         password: userBody.password,
-        idrole: "user",
+        idrole: 2,
         });
         return user;
         };
