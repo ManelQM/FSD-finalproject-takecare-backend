@@ -10,10 +10,13 @@
                 const publication = req.body;
                 const newPublication = await models.publications.create({
                     title: publication.name,
-                    text: publication.text,
-                    offeredto: publication.offeredto,
-                    fulljourney: publication.fulljourney,
+                    nickname: publication.nickname,
                     age: publication.age,
+                    text: publication.text,
+                    fulljourney: publication.fulljourney,
+                    childrencare: publication.childrencare,
+                    disablecare: publication.disablecare,
+                    elderlycare: publication.elderlycare,
                 });
                  res.json ({
                     message: "Created Publication",newPublication,
