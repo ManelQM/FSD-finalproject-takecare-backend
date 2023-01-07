@@ -37,7 +37,10 @@
           type: DataTypes.BOOLEAN,
           allowNull: false
          }, 
-        childrencare: DataTypes.BOOLEAN,
+        childrencare:{
+          type: DataTypes.BOOLEAN,
+          allowNull:false
+        },
         disablecare: DataTypes.BOOLEAN,
         elderlycare: DataTypes.BOOLEAN, 
         age: DataTypes.STRING,

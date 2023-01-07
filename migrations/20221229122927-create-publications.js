@@ -22,6 +22,7 @@
             type: Sequelize.STRING
           },
           nickname: {
+            allowNull: false,
             type: Sequelize.STRING
           },
           age: {

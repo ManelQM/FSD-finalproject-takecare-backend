@@ -1,25 +1,23 @@
-'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-  },
+    'use strict';
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
-};
+    /** @type {import('sequelize-cli').Migration} */
+    module.exports = {
+      async up (queryInterface, Sequelize) {
+          await queryInterface.bulkInsert('Services', [
+            {
+             publication_id: 1,
+             title: "Children Care",
+             nickname: "Custom Care S.L",
+             text: "Cuidador por horas para niños",
+            
+            }
+        ], {});
+      },
+
+      async down (queryInterface, Sequelize) {
+    
+        await queryInterface.bulkDelete('Services', null, {});
+        
+      }
+    };

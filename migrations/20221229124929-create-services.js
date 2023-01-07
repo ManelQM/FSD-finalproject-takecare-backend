@@ -23,13 +23,15 @@ module.exports = {
       nickname: {
         type: Sequelize.STRING
       },
-      offeredto: {
-        type: Sequelize.STRING
-      },
       text: {
         type: Sequelize.STRING
       },
+      Typeofservice: {
+        allowNull:false,
+        type: Sequelize.STRING
+      },
       salary: {
+        allowNull:false,
         type: Sequelize.STRING
       },
     });

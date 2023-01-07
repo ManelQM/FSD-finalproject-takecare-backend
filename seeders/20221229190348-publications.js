@@ -34,7 +34,7 @@
               age: "40",
               text: "Somos una empresa familiar con varios años de experiencia dentro del sector. Ofrecemos siemrpe un cuidado personalizado dependiendo de las necesidades de nuestros pacientes. Años de experiencia nos avalan.",
               fulljourney: true,
-              childrendcare: false,
+              childrencare: false,
               disablecare: true,
               elderlycare: true, 
             },
