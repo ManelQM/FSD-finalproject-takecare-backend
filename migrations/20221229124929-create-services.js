@@ -26,7 +26,7 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
-      Typeofservice: {
+      typeofservice: {
         allowNull:false,
         type: Sequelize.STRING
       },
