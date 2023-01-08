@@ -13,8 +13,8 @@
 
         //Routers
         router.use('/auth',AuthRouter);
-        router.use(authBearerMiddleware);
         router.use('/users', UsersRouter); //User Routers
+        router.use(authBearerMiddleware);
         router.use('/publications', PublicationsRouter); // Publications Routers
         // router.use('/contracts', ContractsRouter);
         router.use('/services',ServicesRouter);

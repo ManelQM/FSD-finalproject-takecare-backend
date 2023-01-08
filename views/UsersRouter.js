@@ -7,8 +7,11 @@
         getAllDeletedUsers,
         destroyUser,
         getDataProfile,
-        updateUser
+        updateUser,
+        userRegister
         } = require('../controllers/UsersController');
+
+        
 
         // Admin access privileges
 
@@ -20,7 +23,8 @@
 
         router.get('/email',isValidUser(),getDataProfile);
         router.patch('/update',isValidRole,updateUser); 
-
+        
+        router.post("/register", userRegister);
 
 
 

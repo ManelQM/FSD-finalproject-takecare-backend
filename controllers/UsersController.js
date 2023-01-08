@@ -3,6 +3,14 @@
         const {passwordServiceEncrypt} = require ("../services/AuthServices");
         require("dotenv").config();
 
+        const {
+          assertValidPasswordService,
+          assertEmailIsValidService,
+          assertEmailIsUniqueService,
+          createUserService
+        } = require("../services/AuthServices");
+        require("dotenv").config();
+
         const getAllUsers = async (req,res) => {
             try {
                 const users = await models.users.findAll();
@@ -76,10 +84,50 @@
             res.json({resp,message: "Deleted user!"})
         }
 
+        const userRegister = async (req, res) => {
+
+            const body = req.body;
+            try {
+              assertValidPasswordService(body.password); //esto valida el password
+            } catch (error) {
+              console.error(error);
+              res.status(400).send(`Invalid Password Format, ${error.message}`);
+              return;
+            }
+          
+            try {
+              assertEmailIsValidService(body.email);
+            } catch (error) {
+              console.error(error);
+              res.status(400).send(`Invalid Email Format, ${error.message}`);
+              return;
+            }
+          
+            try {
+              await assertEmailIsUniqueService(body.email);
+              console.log("Esto es una API");
+            } catch (error) {
+              console.error(error);
+              res
+                .status(400)
+                .send(`Registered Email, please try another one, ${error.message}`);
+              return;
+            }
+          
+            try {
+              const UserCreated = await createUserService(body);
+              res.status(201).json(UserCreated);
+            } catch (error) {
+              console.error(error);
+              res.status(500).json({ message: error.message });
+            }
+          };
+
         
             module.exports = {
             getAllUsers,
             getAllDeletedUsers,
             destroyUser,
             getDataProfile,
-            updateUser};
+            updateUser,
+            userRegister};

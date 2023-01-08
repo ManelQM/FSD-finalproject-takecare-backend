@@ -1,100 +1,68 @@
-    
-    const models = require("../models/index");
-    const {
-        assertValidPasswordService,
-        assertEmailIsValidService,
-        assertEmailIsUniqueService,
-        createUserService,
-        encryptPasswordService,
-    } = require("../services/AuthServices");
-    require("dotenv").config();
-    
-    const jsonwebtoken = require("jsonwebtoken");
+const models = require("../models/index");
 
-    const authRegisterController = async (req,res) => {
-        
-        const body = req.body;
-        try{
-            assertValidPasswordService(body.password);
-        }catch(error) {
-            console.error(error);
-            res.status(400).send(`Invalid Password Format, ${error.message}`);
-            return;
-        }
-        
-        try {
-            assertEmailIsValidService(body.email);
-        }catch(error) {
-            console.error(error);
-            res.status(400).send(`Invalid Email Format, ${error.message}`);
-            return;
-        }
+const {
+  assertValidPasswordService,
+  assertEmailIsValidService,
+  assertEmailIsUniqueService,
+  createUserService,
+  bcryptCompare,
+} = require("../services/AuthServices");
+require("dotenv").config();
 
-        try {
-            await assertEmailIsUniqueService(body.email);
-            console.log("Esto es una API");
-        } catch (error) {
-            console.error (error);
-            res.status(400).send(`Registered Email, please try another one, ${error.message}`);
-            return;
-        }
+const jsonwebtoken = require("jsonwebtoken");
+const { Console } = require("winston/lib/winston/transports");
 
-        try {
-            const UserCreated = await createUserService(body);
-            res.status(201).json(UserCreated);
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({message:error.message});
-        }
-     };
+const authLoginController = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const resultado = await models.User.findOne({ where: { email: email } });
+
+    if (!resultado) {
+      res.status(401).json({ message: "Email or Password incorrects" });
+      return;
+    }
+
+    if (resultado.deleted == true) {
+      res.status(401).json({ message: "Access Denied" });
+      return;
+    }
+
+    // bcryptCompare
+
+    const respBcryptCompare = await bcryptCompare(
+      password, //el de postman
+      resultado.password
+    );
+
+    if (respBcryptCompare === false) {
+      res.status(400).json({ message: "Password or Email incorrect!" });
+    } else {
 
 
-    const authLoginController = async (req,res) => {
-        const {email,password} = req.body;
-        try{
-            const userTarget = await models.User.findONe({
-                where:{email:email},
-            });
-            if (!userTarget) {
-                res.status(401).json({message: "Email or Password incorrects"});
-                return;
-            }
+      const secret = process.env.ACCESS_TOKEN_SECRET || "napoleon";
+ 
 
-            if (userTarget.deleted == true) {
-                res.status(401).json({message: "Access Denied"});
-                return;
-            }
-            
-            const hashPassword = encryptPasswordService(password);
-            if (hashPassword !== userTarget.password) {
-                res.status(401).json({message:"Email or Password invalid"});
-                return;
-            }
+      const jwt = jsonwebtoken.sign(
+        {
+          name: resultado.name,
+          id: resultado.id_user,
+          email: resultado.email,
+          nickname: resultado.nickname,
+          role: resultado.idrole,
+        },
+        secret
+      );
+      res.status(200).json({
+        message: "Login with success",
+        jwt: jwt,
+      });
+    }
+  } catch (error) {
+    res.send(error);
+  }
+};
 
-            const secret = process.env.JWT_SECRET;
-            if(secret.length < 10) {
-                throw new Error("JwtSecret error");
-            }
-
-            const jwt =jsonwebtoken.sign({
-                name:userTarget.name,
-                id:userTarget.id_user,
-                email:userTarget.email,
-                nickname:userTarget.nickname,
-                role:userTarget.idrole,
-
-            }, secret);
-            res.status(200).json({
-                message:"Login with success",
-                jwt:jwt,
-            });
-         }catch(error) {
-            res.send(error);
-         }
-    };
-
-    module.exports = {
-        authLoginController,
-        authRegisterController,
-      };
-      
+module.exports = {
+  authLoginController
+};
