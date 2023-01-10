@@ -18,15 +18,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   Role.init({
     id_role: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
     },
-    rolename: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Role',
+    timestamps: false
   });
   return Role;
 };

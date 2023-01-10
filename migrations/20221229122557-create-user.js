@@ -40,7 +40,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       idrole: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         references: {
           model: 'Roles',

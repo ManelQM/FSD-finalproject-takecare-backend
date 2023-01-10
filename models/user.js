@@ -55,8 +55,8 @@
           age: DataTypes.STRING,
           caregiver: DataTypes.BOOLEAN,
           idrole: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
+          type: DataTypes.STRING,
+          allowNull: false
         }
       }, {
         sequelize,

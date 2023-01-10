@@ -5,13 +5,9 @@ module.exports = {
     await queryInterface.createTable('Roles', {
       id_role: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      rolename: {
         type: Sequelize.STRING
-      },
+      }
 
     });
   },

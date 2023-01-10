@@ -59,7 +59,7 @@ const createUserService = async (userBody) => {
     nickname: userBody.nickname,
     email: userBody.email,
     password: userBody.password,
-    idrole: 2,
+    idrole: userBody.role,
   });
   return user;
 };
