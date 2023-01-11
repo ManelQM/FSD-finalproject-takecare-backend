@@ -10,8 +10,8 @@
         updateUser,
         userRegister
         } = require('../controllers/UsersController');
+        const auth = require('../config/auth');
 
-        
 
         // Admin access privileges
 
@@ -21,9 +21,10 @@
 
         //User access privileges
 
+
+
         router.get('/email',isValidUser(),getDataProfile);
         router.patch('/update',isValidRole,updateUser); 
-        
         router.post("/register", userRegister);
 
 

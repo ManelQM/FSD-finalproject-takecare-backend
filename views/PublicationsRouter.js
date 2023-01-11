@@ -13,7 +13,7 @@
         router.post("/newpublication",createPublication);
         router.patch("/updatepublication",updateMyPublication);
         router.delete("/delete",deletePublication);
-        router.get("/mypublications",getMyPublications);
+        router.get("/mypublications",isValidUser,getMyPublications);
         router.get("/all",getAllPublications);
 
 

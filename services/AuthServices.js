@@ -1,5 +1,5 @@
 const models = require("../models/index");
-const crypto = require("node:crypto");
+// const crypto = require("node:crypto");
 const bcrypt = require('bcrypt');
 
 // Service to assert if the structure of the password is ok
@@ -43,10 +43,20 @@ const assertEmailIsUniqueService = async (email) => {
 };
 
 // Service to encrypt a password and create a hash of said password
-const encryptPasswordService = (pass) => {
-  const hash = crypto.createHmac("sha512", "").update(pass).digest("base64");
-  return hash;
-};
+// const encryptPasswordService = (pass) => {
+//   const hash = bcrypt.hashSync("sha512","").update(pass).digest("base64");
+//   return hash; 
+// };
+
+// const encryptPasswordService = async (pass) => {
+//   const hashedPassword = bcrypt.hashSync("base64", 10)
+//   return hashedPassword
+// }
+
+const encryptPasswordService = async (password) => {
+  const hashedPassword =  bcrypt.hashSync("base64", Number.parseInt(password))
+  return hashedPassword
+}
 
 // Service to create a new user in the database
 const createUserService = async (userBody) => {
@@ -58,16 +68,19 @@ const createUserService = async (userBody) => {
     surname: userBody.surname,
     nickname: userBody.nickname,
     email: userBody.email,
-    password: userBody.password,
+    password: await encryptPasswordService(userBody.password),
     idrole: "user",
   });
   return user;
 };
 
 const bcryptCompare = async (password, hashedPassword) => {
+  console.log(password, hashedPassword)
   const passCompare = await bcrypt.compare(password, hashedPassword);
   return passCompare;
 };
+
+
 
 module.exports = {
   assertValidPasswordService,

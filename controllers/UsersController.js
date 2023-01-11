@@ -1,6 +1,6 @@
 
         const models = require ("../models/index");
-        const {passwordServiceEncrypt} = require ("../services/AuthServices");
+        const {encryptPasswordService } = require ("../services/AuthServices");
         require("dotenv").config();
 
         const {
@@ -10,6 +10,7 @@
           createUserService
         } = require("../services/AuthServices");
         require("dotenv").config();
+        
 
         const getAllUsers = async (req,res) => {
             try {
@@ -52,7 +53,7 @@
         delete user.email;
         let newPassword = userTarget.password;
         if(user.password) {
-            newPassword = passwordServiceEncrypt(user.password);
+            newPassword = encryptPasswordService (user.password);
         }
 
         let resp = await models.User.update(
@@ -83,7 +84,7 @@
             );
             res.json({resp,message: "Deleted user!"})
         }
-
+ 
         const userRegister = async (req, res) => {
 
             const body = req.body;
@@ -105,7 +106,7 @@
           
             try {
               await assertEmailIsUniqueService(body.email);
-              console.log("Esto es una API");
+              console.log("Not valid");
             } catch (error) {
               console.error(error);
               res

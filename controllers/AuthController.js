@@ -31,11 +31,11 @@ const authLoginController = async (req, res) => {
     // bcryptCompare
 
     const respBcryptCompare = await bcryptCompare(
-      password, //el de postman
+      password, 
       resultado.password
     );
 
-    if (respBcryptCompare === false) {
+    if (respBcryptCompare == false) {
       res.status(400).json({ message: "Password or Email incorrect!" });
     } else {
 
@@ -46,7 +46,7 @@ const authLoginController = async (req, res) => {
       const jwt = jsonwebtoken.sign(
         {
           name: resultado.name,
-          id: resultado.id_user,
+          id: resultado.id,
           email: resultado.email,
           nickname: resultado.nickname,
           role: resultado.idrole,

@@ -1,7 +1,7 @@
 
         const models = require ('../models/index');
         require("dotenv").config();
-        // const { Op } = require("sequelize");
+        const { Op } = require("sequelize");
         
 
         const createPublication = async (req,res) => {

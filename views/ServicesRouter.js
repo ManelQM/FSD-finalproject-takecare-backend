@@ -1,7 +1,7 @@
 
         const express = require('express');
         const router = express.Router();
-        const {isValidRole,isValidUser,authBearerMiddleware,} = require("../middlewares/AuthMiddleware");
+        const {isValidRole,isValidUser,authBearerMiddleware,} = require("../middlewares/authMiddleware");
         const {allMyServices,updateService,servicesByContract,deleteService,} = require('../controllers/ServicesController');
 
         
