@@ -1,7 +1,8 @@
 
         const models = require ('../models/index');
+        
         require("dotenv").config();
-        const { Op } = require("sequelize");
+       
         
 
         const createPublication = async (req,res) => {
@@ -95,7 +96,12 @@
         
         const getAllPublications = async (req,res) => {
             try {
-                const publications = await models.publications.findAll();
+                let publications = await models.publications.findAll({
+                    where: {
+                        password: req.auth.password
+                    }
+                });
+                
                 res.json({message: "All the publications list", publications});
             }catch (error) {
                 console.error(error);

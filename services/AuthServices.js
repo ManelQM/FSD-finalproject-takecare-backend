@@ -43,16 +43,7 @@ const assertEmailIsUniqueService = async (email) => {
   }
 };
 
-// Service to encrypt a password and create a hash of said password
-// const encryptPasswordService = (pass) => {
-//   const hash = bcrypt.hashSync("sha512","").update(pass).digest("base64");
-//   return hash; 
-// };
-
-// const encryptPasswordService = async (pass) => {
-//   const hashedPassword = bcrypt.hashSync("base64", 10)
-//   return hashedPassword
-// }
+// Service to encrypt a password and create a hash password
 
 const encryptPasswordService = async (password) => {
   // const hashedPassword =  bcrypt.hashSync("base64", Number.parseInt(password))
@@ -78,7 +69,6 @@ const createUserService = async (userBody) => {
 };
 
 const bcryptCompare = async (password, hashedPassword) => {
-  console.log(password, hashedPassword)
   const passCompare = await bcrypt.compare(password, hashedPassword);
   return passCompare;
 };

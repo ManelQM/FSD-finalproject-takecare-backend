@@ -1,30 +1,57 @@
 
-    const jsonwebtoken = require("jsonwebtoken");
-
+    const jwt = require("jsonwebtoken");
+    const authConfig = require('../config/auth');
     //Here is  how the middleware authenticate the User
 
 
-    const authBearerMiddleware = (req, res, next) => {
-      const authentication = req.headers["authorization"];
-      const token = authentication && authentication.split(" ")[1];
-      if (token == null) {
-        return res
-          .status(401)
-          .json({ message: "Not logged, please try to log correctly" });
-      }
+     const authBearerMiddleware = (req, res, next) => {
+
+    console.log(res.headers);
+
+    // Comprobar que existe el token
+    if(!req.headers.authorization) {
+        res.status(401).json({ msg: "Access Denied" });
+    } else {
+
+        // Comrpobar la validez de este token
+        let token = req.headers.authorization.split(" ")[1];
+
+        // Comprobar la validez de este token
+        jwt.verify(token, authConfig.secret, (err, decoded) => {
+
+            if(err) {
+                res.status(500).json({ msg: "Decode Token Problem :(", err });
+            } else {
+                req.user = decoded;
+                next();
+            }
+
+        })
+    }
+
+   };
     
-      try {
-        jsonwebtoken.verify(token, process.env.JWT_TOKEN_SECRET);
-        if (token.exp < Date.now()) {
-          return res
-            .status(401)
-            .json({ message: "Log in timed out, please log in again" });
-        }
-        next();
-      } catch (error) {
-        res.status(400).send({ message: "Invalid token!" });
-      }
-    };
+    //(req, res, next) => {
+    //   const authentication = req.headers["authorization"];
+    //   const token = authentication && authentication.split(" ")[1];
+    //   if (token == null) {
+    //     return res
+    //       .status(401)
+    //       .json({ message: "Not logged, please try to log correctly" });
+    //   }
+    
+    //   try {
+    //     jsonwebtoken.verify(token, process.env.JWT_TOKEN_SECRET);
+    //     if (token.exp < Date.now()) {
+    //       return res
+    //         .status(401)
+    //         .json({ message: "Log in timed out, please log in again" });
+    //     }
+    //     next();
+    //   } catch (error) {
+    //     res.status(400).send({ message: "Invalid token!" });
+    //   }
+    // };
       // Middleware for roles
       const isValidRole = (role) => (req,res,next) => {
 
