@@ -1,6 +1,7 @@
 const models = require("../models/index");
 // const crypto = require("node:crypto");
 const bcrypt = require('bcrypt');
+const auth = require('../config/auth');
 
 // Service to assert if the structure of the password is ok
 const assertValidPasswordService = (pass) => {
@@ -54,21 +55,23 @@ const assertEmailIsUniqueService = async (email) => {
 // }
 
 const encryptPasswordService = async (password) => {
-  const hashedPassword =  bcrypt.hashSync("base64", Number.parseInt(password))
+  // const hashedPassword =  bcrypt.hashSync("base64", Number.parseInt(password))
+  let hashedPassword = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
   return hashedPassword
 }
 
 // Service to create a new user in the database
 const createUserService = async (userBody) => {
-  const hash = encryptPasswordService(userBody.password);
-  userBody.password = hash;
+  // const hash = encryptPasswordService(userBody.password);
+  let hashedPassword = bcrypt.hashSync(userBody.password, Number.parseInt(auth.rounds));
+  // userBody.password = hash;
 
   const user = await models.User.create({
     name: userBody.name,
     surname: userBody.surname,
     nickname: userBody.nickname,
     email: userBody.email,
-    password: await encryptPasswordService(userBody.password),
+    password: hashedPassword,
     idrole: "user",
   });
   return user;
