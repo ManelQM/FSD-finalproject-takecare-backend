@@ -16,9 +16,9 @@
           User.belongsTo(models.Role,  {
             foreignKey: 'idrole'
           });
-          User.hasMany(models.Publications, {
-            foreignKey: 'user_id'
-          });
+          // User.hasMany(models.Publications, {
+          //   foreignKey: 'user_id'
+          // });
           User.hasMany(models.Contract, {
             foreignKey: 'user_id'
           });

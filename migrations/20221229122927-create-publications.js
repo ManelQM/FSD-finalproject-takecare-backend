@@ -10,14 +10,14 @@
             primaryKey: true,
             type: Sequelize.INTEGER
           },
-          user_id: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            references: {
-              model: 'Users',
-              key: 'id'
-            }
-          },
+          // user_id: {
+          //   type: Sequelize.INTEGER,
+          //   allowNull: false,
+          //   references: {
+          //     model: 'Users',
+          //     key: 'id'
+          //   }
+          // },
           title: {
             type: Sequelize.STRING
           },

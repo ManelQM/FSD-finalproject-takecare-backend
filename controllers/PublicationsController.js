@@ -30,11 +30,10 @@
         const updateMyPublication = async (req,res) => {
             try {
                 const publication =req.body; 
-                await models.publication.update(
+                await models.Publications.update(
                     {
                         title: publication.title,
                         text: publication.text,
-                        offeredto: publication.offeredto,
                         fulljourney: publication.fulljourney
                     },
                     {
@@ -53,18 +52,18 @@
 
         const deletePublication = async (req,res) => {
             try{
-                const publicationId = req.body.publication;
-                const publication = await models.publications.findOne ({
+                const publicationId = req.body.id;
+                const publication = await models.Publications.findOne ({
                     where: {
                          id: publicationId,
                     },
                 });
-                 if (publication.user_id !== req.auth.id) {
+                 if (publication.id !== req.body.id) { //publication.user_id ! == req.auth.id
                     res.json({
                         message: "Cant delete publication. Not authorized!"
                     });
                  } else {
-                    await models.publication.destroy({
+                    await models.Publications.destroy({
                         where: {
                             id: publicationId,
                         },
@@ -77,6 +76,38 @@
                 console.error(error);
             }
         }
+
+        // const deletePublication = async (req, res) => {
+            
+        //     try {
+        //         const id = req.params.id;
+        //         const publication = await models.Publications.findOne({
+
+
+        //         })
+        //     }
+            
+          
+        //     category.destroy({
+        //       where: { id: id }
+        //     })
+        //       .then(num => {
+        //         if (num == 1) {
+        //           res.send({
+        //             message: "Category was deleted successfully!"
+        //           });
+        //         } else {
+        //           res.send({
+        //             message: `Cannot delete Category with id=${id}. Maybe Movie was not found!`
+        //           });
+        //         }
+        //       })
+        //       .catch(err => {
+        //         res.status(500).send({
+        //           message: "Could not delete Category with id=" + id
+        //         });
+        //       });
+        //   };
 
         const getMyPublications = async (req,res) => {
             try {

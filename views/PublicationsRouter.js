@@ -13,8 +13,8 @@
             
         router.get("/allpublications",getAllPublications);
         router.post("/newpublication",createPublication);
-        router.patch("/updatepublication",updateMyPublication);
-        router.delete("/delete",deletePublication);
+        router.patch("/updatepublication/:id",updateMyPublication);
+        router.delete("/delete/:id",deletePublication);
         router.get("/mypublications",getMyPublications);
         
 
