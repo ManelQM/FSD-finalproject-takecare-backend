@@ -14,7 +14,7 @@
 
         const getAllUsers = async (req,res) => {
             try {
-                const users = await models.users.findAll();
+                const users = await models.User.findAll();
                 res.json({message:"Founded Users", users});
             }catch (error){
                 console.error(error);

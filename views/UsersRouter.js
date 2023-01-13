@@ -15,16 +15,16 @@
 
         // Admin access privileges
 
-        router.get('/all',isValidRole("admin"),getAllUsers);
-        router.get('/delete/all',isValidRole("admin"),getAllDeletedUsers); 
-        router.patch('/delete',isValidRole("admin"),destroyUser);
+        router.get('/all',getAllUsers);
+        router.get('/delete/all',getAllDeletedUsers); 
+        router.patch('/delete',destroyUser);
 
         //User access privileges
 
 
 
-        router.get('/email',isValidUser(),getDataProfile);
-        router.patch('/update',isValidRole,updateUser); 
+        router.get('/email',getDataProfile);
+        router.patch('/update',updateUser); 
         router.post("/register", userRegister);
 
 

@@ -6,10 +6,10 @@
         
 
         const createPublication = async (req,res) => {
-            
+            console.log(req, "request of createpublication")
             try{
                 const publication = req.body;
-                const newPublication = await models.publications.create({
+                const newPublication = await models.Publications.create({
                     title: publication.name,
                     nickname: publication.nickname,
                     age: publication.age,
@@ -94,19 +94,29 @@
             }
         };
         
+        // const getAllPublications = async (req,res) => {
+        //     console.log (req, "esto es del endpoint")
+        //     try {
+        //         let publications = await models.Publications.findAll({
+        //             where: {
+        //                 token: req.auth.password
+        //             }
+        //         });
+                
+        //         res.json({message: "All the publications list", publications});
+        //     }catch (error) {
+        //         console.error(error, "no hay publicaciones o ha ocurrido un error");
+        //     }
+        // }
+
         const getAllPublications = async (req,res) => {
             try {
-                let publications = await models.publications.findAll({
-                    where: {
-                        password: req.auth.password
-                    }
-                });
-                
-                res.json({message: "All the publications list", publications});
-            }catch (error) {
+                const publications = await models.Publications.findAll();
+                res.json({message:"All publications list", publications});
+            }catch (error){
                 console.error(error);
             }
-        }
+        };
 
             module.exports = {
             createPublication,

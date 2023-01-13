@@ -10,7 +10,7 @@
             surname: "Montalbán",
             nickname: "ManelQM",
             email: "admin@fakemail.com",
-            password: "Manel12345",
+            password: bcrypt.hashSync("Manel12345", Number.parseInt(authConfig.rounds)),
             age: "38",
             city: "Puerto de Sagunto",
             idrole: "admin",

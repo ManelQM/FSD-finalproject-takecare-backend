@@ -2,7 +2,7 @@
         const router = require('express').Router();
 
         // Middlewares
-        const {authBearerMiddleware} = require("./middlewares/authMiddleware");
+        const authMiddleware = require("./middlewares/authMiddleware");
 
         //Views 
         const UsersRouter = require('./views/UsersRouter');
@@ -14,7 +14,7 @@
         //Routers
         router.use('/auth',AuthRouter);
         router.use('/users', UsersRouter); //User Routers
-        router.use(authBearerMiddleware);
+        // router.use(authMiddleware);
         router.use('/publications', PublicationsRouter); // Publications Routers
         // router.use('/contracts', ContractsRouter);
         router.use('/services',ServicesRouter);

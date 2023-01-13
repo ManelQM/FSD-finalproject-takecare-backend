@@ -40,7 +40,7 @@ const authLoginController = async (req, res) => {
     } else {
 
 
-      const secret = process.env.ACCESS_TOKEN_SECRET || "napoleon";
+      const secret = process.env.ACCESS_TOKEN_SECRET;
  
 
       const jwt = jsonwebtoken.sign(

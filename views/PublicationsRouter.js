@@ -11,10 +11,10 @@
             getAllPublications,
             } = require('../controllers/PublicationsController'); 
             
-        router.get("/allpublications",isValidUser,getAllPublications);
-        router.post("/newpublication",isValidUser,createPublication);
-        router.patch("/updatepublication",isValidUser,updateMyPublication);
-        router.delete("/delete",isValidUser,deletePublication);
+        router.get("/allpublications",getAllPublications);
+        router.post("/newpublication",createPublication);
+        router.patch("/updatepublication",updateMyPublication);
+        router.delete("/delete",deletePublication);
         router.get("/mypublications",getMyPublications);
         
 

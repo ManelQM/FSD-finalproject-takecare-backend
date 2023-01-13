@@ -5,10 +5,10 @@
         const {allMyServices,updateService,servicesByContract,deleteService,} = require('../controllers/ServicesController');
 
         
-        router.get('/allmyservices', isValidUser(),allMyServices);
-        router.patch('/updateservice',isValidUser(),updateService);
+        router.get('/allmyservices',allMyServices);
+        router.patch('/updateservice',updateService);
         // router.get('/services/bycontract',isValidUser(),servicesByContract);
-        router.delete('/delete',isValidRole(1),deleteService ); 
+        router.delete('/delete',deleteService ); 
 
         module.exports = router; 
 

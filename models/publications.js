@@ -23,7 +23,6 @@
       Publications.init({
         title: {
          type: DataTypes.STRING,
-         allowNull: false, 
         },
         nickname: {
           type: DataTypes.STRING,
@@ -51,6 +50,7 @@
       }, {
         sequelize,
         modelName: 'Publications',
+        timestamps: false,
       });
       return Publications;
     };
