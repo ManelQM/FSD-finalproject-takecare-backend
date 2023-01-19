@@ -21,14 +21,14 @@
             }
         };
 
-        const getAllDeletedUsers = async (req,res) => {
-            let resp = await models.User.findAll ({
-                where: {
-                    deleted: true,
-                },
-            });
-            res.send(resp);
-        };
+        // const getAllDeletedUsers = async (req,res) => {
+        //     let resp = await models.User.findAll ({
+        //         where: {
+        //             deleted: true,
+        //         },
+        //     });
+        //     res.send(resp);
+        // };
 
 
         // Role:User-My data Profile
@@ -127,7 +127,7 @@
         
             module.exports = {
             getAllUsers,
-            getAllDeletedUsers,
+            
             destroyUser,
             getDataProfile,
             updateUser,

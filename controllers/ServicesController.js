@@ -6,7 +6,7 @@
 
         const allMyServices = async (req,res) => {
             try {
-                let services = await models.services.findAll({
+                let services = await models.Services.findAll({
                     where:{
                         publication_id: req.auth.id,
                     },
@@ -18,10 +18,12 @@
             }catch(error){}
         }; 
 
+        
+
         const updateService = async (req,res) => {
             try {
                 let servicesupdate = req.body.service;
-                const services = await models.services.findOne({
+                const services = await models.Services.findOne({
                     where:{
                         id:servicesupdate,
                     },

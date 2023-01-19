@@ -16,7 +16,6 @@
         // Admin access privileges
 
         router.get('/all',getAllUsers);
-        router.get('/delete/all',getAllDeletedUsers); 
         router.patch('/delete',destroyUser);
 
         //User access privileges

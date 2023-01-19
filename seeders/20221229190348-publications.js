@@ -43,7 +43,7 @@
               title: "Lookingforwork",
               nickname: "Aliceteach",
               age: "27",
-              text: "Me llamo Alice, soy psicóloga y estudiante de enfermería. Me ofrezco con contato por horas para sesiones de psicopedagogía para niños. También tengo cierta experiencia en el cuidado de personas con movilidad reducida también con contrato por horas.",
+              text: "Hi! My name is Alice! I am a graduated nurse and now pychology student. I work with any kind of age or problem, so contract me if you want ",
               fulljourney: false,
               childrencare: true,
               disablecare: true,
@@ -51,10 +51,10 @@
             },
             {
               
-              title: "Familia busca cuidador/a por horas",
+              title: "We need a caregiver for our Grandfather",
               nickname: "Niko",
               age: "46",
-              text: "Me llamo Niko y somos una familia rusa que busca un cuidador por horas para una persona de 81 años.",
+              text: "We are a family from Rusia and we are looking for some person who can take care of our Grandfather while we are out. He doesnt speaks so much english",
               fulljourney: false,
               childrencare: false,
               disablecare: false,
