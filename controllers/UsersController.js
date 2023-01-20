@@ -9,7 +9,7 @@
           assertEmailIsUniqueService,
           createUserService
         } = require("../services/AuthServices");
-        require("dotenv").config();
+        
         
 
         const getAllUsers = async (req,res) => {

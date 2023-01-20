@@ -1,9 +1,14 @@
-const express = require('express'); 
-const router = express.Router; 
-
-const {
-    createContract,
-} = require("../controllers/ContractControllers");
+    const express = require('express'); 
+    const router = express.Router();
 
 
-router.post("/newcontract",createContract)
+    const {
+        createContract,getAllContracts,destroyContract
+    } = require("../controllers/ContractControllers");
+
+
+    router.post("/newcontract",createContract);
+    router.get("/allcontracts",getAllContracts); 
+    router.delete("/deletecontract",destroyContract); 
+
+    module.exports = router

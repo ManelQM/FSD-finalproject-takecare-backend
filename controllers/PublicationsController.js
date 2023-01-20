@@ -6,7 +6,7 @@
         
 
         const createPublication = async (req,res) => {
-            console.log(req, "request of createpublication")
+        
             try{
                 const publication = req.body;
                 const newPublication = await models.Publications.create({
