@@ -1,7 +1,7 @@
 
         const express = require('express');
         const router = express.Router();
-        const {authBeareMiddleware, isValidUser, isValidUserId, isValidRole,} = require('../middlewares/authMiddleware');
+        const {authMiddleware, isValidUser, isValidUserId, isValidRole,} = require('../middlewares/authMiddleware');
         const {
         getAllUsers,
         getAllDeletedUsers,
@@ -15,15 +15,15 @@
 
         // Admin access privileges
 
-        router.get('/all',getAllUsers);
-        router.patch('/delete',destroyUser);
+        router.get('/all',isValidRole("admin"),getAllUsers);
+        router.patch('/delete',isValidRole("admin"), destroyUser);
 
         //User access privileges
 
 
 
-        router.get('/email',getDataProfile);
-        router.patch('/update',updateUser); 
+        router.get('/email',isValidUser(), getDataProfile);
+        router.patch('/update',isValidUser(), updateUser); 
         router.post("/register", userRegister);
 
 

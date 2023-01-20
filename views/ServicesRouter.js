@@ -5,10 +5,11 @@
         const {allMyServices,updateService,servicesByContract,deleteService,} = require('../controllers/ServicesController');
 
         
-        router.get('/allmyservices',allMyServices);
+        router.get('/allmyservices',isValidRole("admin"),allMyServices);
         router.patch('/updateservice',updateService);
+        // router.post('/createservice',isValidUser(),createService);
         // router.get('/services/bycontract',isValidUser(),servicesByContract);
-        router.delete('/delete',deleteService ); 
+        router.delete('/delete',isValidUser(),deleteService ); 
 
         module.exports = router; 
 
