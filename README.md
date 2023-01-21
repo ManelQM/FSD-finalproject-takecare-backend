@@ -7,7 +7,17 @@ In this case the idea is to create the space through this APP for Caregivers of 
 
 ---
 
-## DB Design
+## DDBB Design
+
+The DDBB architecture is focused in the following relationships; 
+
+* One to Many --> User belongs to Role
+* One to Many --> Publications belongs to User
+* Many to Many --> Between User and Services through Contracts
+
+## Relationship Diagram 
+![DB](./img/db.png)
+
 
 
 
