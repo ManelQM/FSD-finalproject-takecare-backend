@@ -28,8 +28,8 @@ module.exports = {
       nickname: {
         type: Sequelize.STRING
       },
-      date: {
-        type: Sequelize.DATE
+      title: {
+        type: Sequelize.STRING
       },
   
     });

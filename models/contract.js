@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     service_id: DataTypes.INTEGER,
     nickname: DataTypes.STRING,
     title: DataTypes.INTEGER,
-    date: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Contract',

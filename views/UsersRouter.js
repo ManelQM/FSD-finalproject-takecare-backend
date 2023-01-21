@@ -3,9 +3,8 @@
         const {authMiddleware, isValidUser, isValidUserId, isValidRole,} = require('../middlewares/authMiddleware');
         const {
         getAllUsers,
-        getAllDeletedUsers,
         destroyUser,
-        getDataProfile,
+        getMyProfile,
         updateUser,
         userRegister
         } = require('../controllers/UsersController');
@@ -21,7 +20,7 @@
 
 
 
-        router.get('/email', getDataProfile);
+        router.get('/email', getMyProfile);
         router.patch('/update', updateUser); 
         router.post("/register", userRegister);
 

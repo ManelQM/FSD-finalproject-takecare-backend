@@ -32,9 +32,9 @@
 
 
         // Role:User-My data Profile
-        const getDataProfile = async (req,res) => {
+        const getMyProfile = async (req,res) => {
         let {email} = req.params;
-        let resp = await models.User.findAll({
+        let resp = await models.User.findOne({
             where: {email:email},
             });
             res.send(resp);
@@ -129,6 +129,6 @@
             getAllUsers,
             
             destroyUser,
-            getDataProfile,
+            getMyProfile,
             updateUser,
             userRegister};

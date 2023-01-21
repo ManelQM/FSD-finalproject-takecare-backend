@@ -43,10 +43,10 @@
         disablecare: DataTypes.BOOLEAN,
         elderlycare: DataTypes.BOOLEAN, 
         age: DataTypes.STRING,
-        // user_id: {
-        //   type: DataTypes.INTEGER,
-        //   allowNull: false,
-        // }
+        user_id: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        }
       }, {
         sequelize,
         modelName: 'Publications',
