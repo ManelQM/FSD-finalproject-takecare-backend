@@ -18,6 +18,8 @@ The DDBB architecture is focused in the following relationships;
 ## Relationship Diagram 
 ![DB](./img/db.png)
 
+## Technologies 
 
-
+![JS](./img/logo-javascript-logo-png-transparentj.png)
+![Docker](./)
 
