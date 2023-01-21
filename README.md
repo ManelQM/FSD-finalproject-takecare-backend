@@ -21,5 +21,22 @@ The DDBB architecture is focused in the following relationships;
 ## Technologies 
 
 ![JS](./img/logo-javascript-logo-png-transparentj.png)
-![Docker](./)
+![Docker](./img/docker-ar21%20(1)%20(2).svg)
+![Express](./img/expressjs-ar21%20(1)%20(1).svg)
+![Sequelize](./img/sequelizejs-ar21%20(1)%20(1).svg)
+![Node.js](./img/nodejs-horizontal%20(1).svg)
+![MySQL](./img/mysql-ar21%20(1)%20(1).svg)
 
+
+## Deployment
+
+BDDD and Api are full deployed on railway.
+[ApiLink]("fsdtakecare-backend-production.up.railway.app")
+
+If its desire users can reproduce the same conditions clone this repo [GitHub]("https://github.com/ManelQM/FSDtakecare-backend.git"). 
+
+ After clone the repo in your computer put in your console "npm i" for a full performance with all the dependencies installed. 
+
+ Next you can reproduce the database with this commands:
+
+ * 
