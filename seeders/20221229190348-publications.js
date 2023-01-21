@@ -6,7 +6,7 @@
       async up (queryInterface, Sequelize) {
           await queryInterface.bulkInsert('Publications', [
             {
-              
+              user_id: 2,
               title: "Caregiver for children",
               nickname: "Custom Care S.L",
               age: "56",
@@ -17,7 +17,7 @@
               elderlycare: false,    
             },
             {
-              
+              user_id: 3,
               title: "Hi I am Anna",
               nickname: "Annacare",
               age: "28",
@@ -28,7 +28,7 @@
               elderlycare: true,
             },
             {
-              
+              user_id: 4,
               title: "Need a Caregiver?",
               nickname: "AntoniaCuidadora S.L",
               age: "40",
@@ -39,7 +39,7 @@
               elderlycare: true, 
             },
             {
-              
+              user_id: 5,
               title: "Lookingforwork",
               nickname: "Aliceteach",
               age: "27",
@@ -50,7 +50,7 @@
               elderlycare: true,
             },
             {
-              
+              user_id: 6,
               title: "We need a caregiver for our Grandfather",
               nickname: "Niko",
               age: "46",

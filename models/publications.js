@@ -12,9 +12,9 @@
          */
         static associate(models) {
           // define association here
-          // Publications.belongsTo(models.User,  {
-          //   foreignKey: 'user_id'
-          // });
+          Publications.belongsTo(models.User,  {
+            foreignKey: 'user_id'
+          });
           Publications.hasMany(models.Services, {
             foreignKey: 'publication_id'
           }) 
