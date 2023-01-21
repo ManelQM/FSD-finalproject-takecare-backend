@@ -40,11 +40,11 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       idrole: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Roles',
-          key: 'id_role',
+          key: 'id',
         },
       },
 

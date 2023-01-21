@@ -12,18 +12,18 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Contract.belongsTo(models.User, {
-        foreignKey: 'user_id'
+        foreignKey: 'userid'
       });
-      Contract.belongsTo(models.Services,{
-        foreignKey: 'service_id'
+      Contract.belongsTo(models.Publication,{
+        foreignKey: 'publicationid'
       });
     }
   }
   Contract.init({
-    user_id: DataTypes.INTEGER,
-    service_id: DataTypes.INTEGER,
+    userid: DataTypes.INTEGER,
+    publicationid: DataTypes.INTEGER,
     nickname: DataTypes.STRING,
-    title: DataTypes.INTEGER,
+    title: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Contract',

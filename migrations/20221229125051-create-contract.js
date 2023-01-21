@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      userid: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -17,11 +17,11 @@ module.exports = {
           key: 'id'
         }
       },
-      service_id: {
+      publicationid: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Services',
+          model: 'Publications',
           key: 'id'
         }
       },

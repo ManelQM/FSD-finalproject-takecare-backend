@@ -3,12 +3,12 @@
 
 
     const {
-        createContract,getAllContracts,destroyContract
+        createContract,getAllContracts,
     } = require("../controllers/ContractControllers");
 
 
     router.post("/newcontract",createContract);
     router.get("/allcontracts",getAllContracts); 
-    router.delete("/deletecontract",destroyContract); 
+    // router.delete("/deletecontract",destroyContract); 
 
     module.exports = router

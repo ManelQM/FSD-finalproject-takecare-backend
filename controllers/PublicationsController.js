@@ -11,6 +11,7 @@
                 const publication = req.body;
                 const newPublication = await models.Publications.create({
                     title: publication.name,
+                    user_id: publication.user_id,
                     nickname: publication.nickname,
                     age: publication.age,
                     text: publication.text,

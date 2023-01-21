@@ -11,6 +11,8 @@ require("dotenv").config();
 
 const jsonwebtoken = require("jsonwebtoken");
 
+const authConfig = require('../config/auth');
+
 
 const authLoginController = async (req, res) => {
   const { email, password } = req.body;
@@ -41,21 +43,24 @@ const authLoginController = async (req, res) => {
 
 
       const secret = process.env.ACCESS_TOKEN_SECRET;
- 
 
-      const jwt = jsonwebtoken.sign(
-        {
-          name: resultado.name,
-          id: resultado.id,
-          email: resultado.email,
-          nickname: resultado.nickname,
-          role: resultado.idrole,
-        },
-        secret
-      );
+      // const jwt = jsonwebtoken.sign(
+      //   {
+      //     name: resultado.name,
+      //     id: resultado.id,
+      //     email: resultado.email,
+      //     nickname: resultado.nickname,
+      //     role: resultado.idrole,
+      //   },
+      //   secret
+      // );
+
+      let token = jsonwebtoken.sign({ user: resultado }, authConfig.secret, {
+        expiresIn: authConfig.expires
+    });
       res.status(200).json({
         message: "Login with success",
-        jwt: jwt,
+        jwt: token,
       });
     }
   } catch (error) {

@@ -10,7 +10,7 @@
             primaryKey: true,
             type: Sequelize.INTEGER
           },
-          user_id: {
+          userid: {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {

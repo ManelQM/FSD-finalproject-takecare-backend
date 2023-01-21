@@ -13,13 +13,15 @@ const models = require ("../models/index");
 };
 
     const createContract = async (req,res) => {
+        console.log("ssoy pepe the frog", req.body);
+
         try { 
             const contract = req.body; 
             const newContract = await models.Contract.create({
                 title: contract.title,
                 nickname: contract.nickname,
-                user_id: contract.user_id,
-                publication_id: contract.publication_id 
+                userid: contract.userid,
+                publicationid: contract.publicationid 
             });
             res.json ({
                 message: "Created Contract",newContract,

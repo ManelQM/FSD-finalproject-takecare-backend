@@ -16,23 +16,23 @@
           User.belongsTo(models.Role,  {
             foreignKey: 'idrole'
           });
-          User.hasMany(models.Publications, {
-            foreignKey: 'user_id'
+          User.hasMany(models.Publication, {
+            foreignKey: 'userid'
           });
           User.hasMany(models.Contract, {
-            foreignKey: 'user_id'
+            foreignKey: 'userid'
           });
-          User.belongsToMany(models.Services, {through:'Contract'});
+          // User.belongsToMany(models.Services, {through:'Contract'});
         }
       }
       User.init(
         {
-          id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-            allowNull: false,
-          },
+          // id: {
+          //   type: DataTypes.INTEGER,
+          //   primaryKey: true,
+          //   autoIncrement: true,
+          //   allowNull: false,
+          // },
           name: {
             type: DataTypes.STRING,
             allowNull: false
