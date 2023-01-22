@@ -9,7 +9,7 @@
         
             try{
                 const publication = req.body;
-                const newPublication = await models.Publications.create({
+                const newPublication = await models.Publication.create({
                     title: publication.name,
                     nickname: publication.nickname,
                     text: publication.text,
@@ -25,7 +25,7 @@
         const updateMyPublication = async (req,res) => {
             try {
                 const publication =req.body; 
-                await models.Publications.update(
+                await models.Publication.update(
                     {
                         title: publication.title,
                         text: publication.text,
@@ -48,7 +48,7 @@
         const deletePublication = async (req,res) => {
             try{
                 const publicationId = req.body.id;
-                const publication = await models.Publications.findOne ({
+                const publication = await models.Publication.findOne ({
                     where: {
                          id: publicationId,
                     },
@@ -58,7 +58,7 @@
                         message: "Cant delete publication. Not authorized!"
                     });
                  } else {
-                    await models.Publications.destroy({
+                    await models.Publication.destroy({
                         where: {
                             id: publicationId,
                         },
@@ -106,7 +106,7 @@
 
         const getMyPublications = async (req,res) => {
             try {
-                let publications = await models.publication.findAll({
+                let publications = await models.Publication.findAll({
                     where: {
                         user_id: req.auth.id,
                     },
