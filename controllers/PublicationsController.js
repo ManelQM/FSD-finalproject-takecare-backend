@@ -11,14 +11,8 @@
                 const publication = req.body;
                 const newPublication = await models.Publications.create({
                     title: publication.name,
-                    user_id: publication.user_id,
                     nickname: publication.nickname,
-                    age: publication.age,
                     text: publication.text,
-                    fulljourney: publication.fulljourney,
-                    childrencare: publication.childrencare,
-                    disablecare: publication.disablecare,
-                    elderlycare: publication.elderlycare,
                 });
                  res.json ({
                     message: "Created Publication",newPublication,
@@ -112,7 +106,7 @@
 
         const getMyPublications = async (req,res) => {
             try {
-                let publications = await models.publications.findAll({
+                let publications = await models.publication.findAll({
                     where: {
                         user_id: req.auth.id,
                     },
@@ -143,7 +137,7 @@
 
         const getAllPublications = async (req,res) => {
             try {
-                const publications = await models.Publications.findAll();
+                const publications = await models.Publication.findAll();
                 res.json({message:"All publications list", publications});
             }catch (error){
                 console.error(error);
