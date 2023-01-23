@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const authentic = require("../middlewares/authMiddleware");
+
+const authMiddleware = require("../middlewares/authMiddleware");
        
 const {
   getAllUsers,
@@ -19,8 +20,8 @@ const {
 
         //User access privileges
 
-        router.get('/email/:email', authentic, getMyProfile);
-        router.patch('/update', authentic,  updateUser); 
+        router.get('/profile/:email', authMiddleware, getMyProfile);
+        router.patch('/update', authMiddleware,  updateUser); 
         router.post('/register', userRegister);
 
 
