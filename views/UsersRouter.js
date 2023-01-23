@@ -3,6 +3,7 @@ const router = express.Router();
 
 
 const authMiddleware = require("../middlewares/authMiddleware");
+const {isValidRole, isValidUser} = require("../middlewares/auth"); 
        
 const {
   getAllUsers,
@@ -20,7 +21,7 @@ const {
 
         //User access privileges
 
-        router.get('/profile/:email', authMiddleware, getMyProfile);
+        router.get('/profile/:email', getMyProfile);
         router.patch('/update', authMiddleware,  updateUser); 
         router.post('/register', userRegister);
 
