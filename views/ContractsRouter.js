@@ -1,7 +1,5 @@
     const express = require('express'); 
     const router = express.Router();
-    const {isValidRole,isValidUser} = require("../middlewares/auth")
-
 
     const {
         createContract,getAllContracts,
@@ -9,7 +7,7 @@
 
 
     router.post("/newcontract",createContract);
-    router.get("/allcontracts",isValidRole(1),getAllContracts); 
+    router.get("/allcontracts",getAllContracts); 
     // router.delete("/deletecontract",destroyContract); 
 
     module.exports = router
