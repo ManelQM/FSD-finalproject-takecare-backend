@@ -45,7 +45,6 @@
         // age: DataTypes.STRING,
         userid: {
           type: DataTypes.INTEGER,
-          allowNull: false,
         }
       }, {
         sequelize,
