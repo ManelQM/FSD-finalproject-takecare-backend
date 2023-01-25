@@ -32,17 +32,17 @@
           type: DataTypes.STRING,
           allowNull: false, 
         },     
-         fulljourney: {
-          type: DataTypes.BOOLEAN,
-          allowNull: false
-         }, 
-        childrencare:{
-          type: DataTypes.BOOLEAN,
-          allowNull:false
-        },
-        disablecare: DataTypes.BOOLEAN,
-        elderlycare: DataTypes.BOOLEAN, 
-        age: DataTypes.STRING,
+        //  fulljourney: {
+        //   type: DataTypes.BOOLEAN,
+        //   allowNull: false
+        //  }, 
+        // childrencare:{
+        //   type: DataTypes.BOOLEAN,
+        //   allowNull:false
+        // },
+        // disablecare: DataTypes.BOOLEAN,
+        // elderlycare: DataTypes.BOOLEAN, 
+        // age: DataTypes.STRING,
         userid: {
           type: DataTypes.INTEGER,
           allowNull: false,

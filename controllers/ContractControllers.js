@@ -1,4 +1,4 @@
-    const contract = require("../models/contract");
+const contract = require("../models/contract");
 const models = require ("../models/index");
 
 
@@ -37,7 +37,5 @@ const models = require ("../models/index");
 module.exports = {
     getAllContracts,
     createContract,
-
-
 }
     
