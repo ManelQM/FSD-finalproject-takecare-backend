@@ -1,17 +1,23 @@
-    'use strict';
+"use strict";
 
-    /** @type {import('sequelize-cli').Migration} */
-    module.exports = {
-      async up (queryInterface, Sequelize) {
-        await queryInterface.bulkInsert('Roles', [{
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert(
+      "Roles",
+      [
+        {
           hierarchy: "admin",
         },
-      {
-        hierarchy: "user",
-      }], {});
-      },
+        {
+          hierarchy: "user",
+        },
+      ],
+      {}
+    );
+  },
 
-      async down (queryInterface, Sequelize) {
-        await queryInterface.bulkDelete('Users', null, {});
-      }
-    };
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete("Users", null, {});
+  },
+};

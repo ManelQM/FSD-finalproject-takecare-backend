@@ -1,30 +1,25 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-
 
 const authMiddleware = require("../middlewares/authMiddleware");
 
-       
 const {
   getAllUsers,
   destroyUser,
   getMyProfile,
   updateUser,
-  userRegister
-} = require('../controllers/UsersController');
+  userRegister,
+} = require("../controllers/UsersController");
 
+// Admin access privileges
 
-        // Admin access privileges
+router.get("/all", getAllUsers);
+router.patch("/delete", destroyUser);
 
-        router.get('/all',getAllUsers);
-        router.patch('/delete', destroyUser);
+//User access privileges
 
-        //User access privileges
+router.get("/profile/:email", authMiddleware, getMyProfile);
+router.patch("/update", authMiddleware, updateUser);
+router.post("/register", userRegister);
 
-        router.get('/profile/:email', authMiddleware, getMyProfile);
-        router.patch('/update', authMiddleware, updateUser); 
-        router.post('/register', userRegister);
-
-
-
-        module.exports = router;
+module.exports = router;

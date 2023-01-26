@@ -11,8 +11,7 @@ require("dotenv").config();
 
 const jsonwebtoken = require("jsonwebtoken");
 
-const authConfig = require('../config/auth');
-
+const authConfig = require("../config/auth");
 
 const authLoginController = async (req, res) => {
   const { email, password } = req.body;
@@ -32,16 +31,11 @@ const authLoginController = async (req, res) => {
 
     // bcryptCompare
 
-    const respBcryptCompare = await bcryptCompare(
-      password, 
-      resultado.password
-    );
+    const respBcryptCompare = await bcryptCompare(password, resultado.password);
 
     if (respBcryptCompare == false) {
       res.status(400).json({ message: "Password or Email incorrect!" });
     } else {
-
-
       const secret = process.env.ACCESS_TOKEN_SECRET;
 
       // const jwt = jsonwebtoken.sign(
@@ -56,8 +50,8 @@ const authLoginController = async (req, res) => {
       // );
 
       let token = jsonwebtoken.sign({ user: resultado }, authConfig.secret, {
-        expiresIn: authConfig.expires
-    });
+        expiresIn: authConfig.expires,
+      });
       res.status(200).json({
         message: "Login with success",
         jwt: token,
@@ -69,5 +63,5 @@ const authLoginController = async (req, res) => {
 };
 
 module.exports = {
-  authLoginController
+  authLoginController,
 };

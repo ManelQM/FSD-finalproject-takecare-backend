@@ -1,6 +1,6 @@
 const models = require("../models/index");
-const bcrypt = require('bcrypt');
-const auth = require('../config/auth');
+const bcrypt = require("bcrypt");
+const auth = require("../config/auth");
 
 // Service to assert if the structure of the password is ok
 const assertValidPasswordService = (pass) => {
@@ -46,14 +46,20 @@ const assertEmailIsUniqueService = async (email) => {
 
 const encryptPasswordService = async (password) => {
   // const hashedPassword =  bcrypt.hashSync("base64", Number.parseInt(password))
-  let hashedPassword = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
-  return hashedPassword
-}
+  let hashedPassword = bcrypt.hashSync(
+    req.body.password,
+    Number.parseInt(authConfig.rounds)
+  );
+  return hashedPassword;
+};
 
 // Service to create a new user in the database
 const createUserService = async (userBody) => {
   // const hash = encryptPasswordService(userBody.password);
-  let hashedPassword = bcrypt.hashSync(userBody.password, Number.parseInt(auth.rounds));
+  let hashedPassword = bcrypt.hashSync(
+    userBody.password,
+    Number.parseInt(auth.rounds)
+  );
   // userBody.password = hash;
 
   const user = await models.User.create({
@@ -72,13 +78,11 @@ const bcryptCompare = async (password, hashedPassword) => {
   return passCompare;
 };
 
-
-
 module.exports = {
   assertValidPasswordService,
   assertEmailIsValidService,
   assertEmailIsUniqueService,
   encryptPasswordService,
   createUserService,
-  bcryptCompare
+  bcryptCompare,
 };
