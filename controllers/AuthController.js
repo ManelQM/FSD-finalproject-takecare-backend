@@ -38,17 +38,6 @@ const authLoginController = async (req, res) => {
     } else {
       const secret = process.env.ACCESS_TOKEN_SECRET;
 
-      // const jwt = jsonwebtoken.sign(
-      //   {
-      //     name: resultado.name,
-      //     id: resultado.id,
-      //     email: resultado.email,
-      //     nickname: resultado.nickname,
-      //     role: resultado.idrole,
-      //   },
-      //   secret
-      // );
-
       let token = jsonwebtoken.sign({ user: resultado }, authConfig.secret, {
         expiresIn: authConfig.expires,
       });
@@ -59,7 +48,6 @@ const authLoginController = async (req, res) => {
     }
   } catch (error) {
     res.send(error);
-    
   }
 };
 
