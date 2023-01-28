@@ -9,6 +9,7 @@ const createPublication = async (req, res) => {
       title: publication.name,
       nickname: publication.nickname,
       text: publication.text,
+      userid: publication.userid
     });
     res.json({
       message: "Created Publication",
@@ -42,6 +43,9 @@ const updateMyPublication = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
   }
 };
 
@@ -70,6 +74,9 @@ const deletePublication = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
   }
 };
 
@@ -116,6 +123,9 @@ const getMyPublications = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
   }
 };
 
@@ -140,6 +150,9 @@ const getAllPublications = async (req, res) => {
     res.json({ message: "All publications list", publications });
   } catch (error) {
     console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
   }
 };
 

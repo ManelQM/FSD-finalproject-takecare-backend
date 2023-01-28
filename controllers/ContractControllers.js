@@ -7,6 +7,9 @@ const getAllContracts = async (req, res) => {
     res.json({ message: "Founded Users", contracts });
   } catch (error) {
     console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
   }
 };
 
@@ -27,6 +30,9 @@ const createContract = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
   }
 };
 

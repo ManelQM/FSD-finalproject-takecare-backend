@@ -59,6 +59,7 @@ const authLoginController = async (req, res) => {
     }
   } catch (error) {
     res.send(error);
+    
   }
 };
 
