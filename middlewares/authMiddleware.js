@@ -8,7 +8,6 @@ module.exports = (req, res, next) => {
     let token = req.headers.authorization.split(" ")[1];
 
     jwt.verify(token, authConfig.secret, (err, decoded) => {
-      console.log(err);
       if (err) {
         res.status(500).json({ msg: "Error during token decodification", err });
       } else {

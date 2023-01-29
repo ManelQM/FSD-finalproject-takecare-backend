@@ -14,7 +14,7 @@ const getAllContracts = async (req, res) => {
 };
 
 const createContract = async (req, res) => {
-  console.log("ssoy pepe the frog", req.body);
+ 
 
   try {
     const contract = req.body;

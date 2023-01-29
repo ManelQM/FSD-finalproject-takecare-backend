@@ -129,20 +129,7 @@ const getMyPublications = async (req, res) => {
   }
 };
 
-// const getAllPublications = async (req,res) => {
-//     console.log (req, "esto es del endpoint")
-//     try {
-//         let publications = await models.Publications.findAll({
-//             where: {
-//                 token: req.auth.password
-//             }
-//         });
 
-//         res.json({message: "All the publications list", publications});
-//     }catch (error) {
-//         console.error(error, "no hay publicaciones o ha ocurrido un error");
-//     }
-// }
 
 const getAllPublications = async (req, res) => {
   try {

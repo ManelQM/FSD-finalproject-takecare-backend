@@ -37,7 +37,7 @@ const assertEmailIsUniqueService = async (email) => {
     where: { email: email },
   });
   if (user && user.deleted == false) {
-    console.log("Hola 1");
+  
     throw new Error("Email is already registered");
   }
 };
@@ -45,7 +45,6 @@ const assertEmailIsUniqueService = async (email) => {
 // Service to encrypt a password and create a hash password
 
 const encryptPasswordService = async (password) => {
-  // const hashedPassword =  bcrypt.hashSync("base64", Number.parseInt(password))
   let hashedPassword = bcrypt.hashSync(
     req.body.password,
     Number.parseInt(authConfig.rounds)

@@ -101,7 +101,6 @@ const userRegister = async (req, res) => {
 
   try {
     await assertEmailIsUniqueService(body.email);
-    console.log("Not valid");
   } catch (error) {
     console.error(error);
     res

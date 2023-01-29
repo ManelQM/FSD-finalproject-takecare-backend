@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 // const {isValidRole, isValidUser} = require('../middlewares/authMiddleware');
-
+const authMiddleware = require("../middlewares/authMiddleware");
 const {
   createPublication,
   updateMyPublication,
