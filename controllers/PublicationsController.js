@@ -5,11 +5,12 @@ require("dotenv").config();
 const createPublication = async (req, res) => {
   try {
     const publication = req.body;
+    // console.log(req.user.id)
     const newPublication = await models.Publication.create({
       title: publication.name,
       nickname: publication.nickname,
       text: publication.text,
-      userid: publication.userid
+      userid: publication.userid,
     });
     res.json({
       message: "Created Publication",
@@ -80,36 +81,6 @@ const deletePublication = async (req, res) => {
   }
 };
 
-// const deletePublication = async (req, res) => {
-
-//     try {
-//         const id = req.params.id;
-//         const publication = await models.Publications.findOne({
-
-//         })
-//     }
-
-//     category.destroy({
-//       where: { id: id }
-//     })
-//       .then(num => {
-//         if (num == 1) {
-//           res.send({
-//             message: "Category was deleted successfully!"
-//           });
-//         } else {
-//           res.send({
-//             message: `Cannot delete Category with id=${id}. Maybe Movie was not found!`
-//           });
-//         }
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message: "Could not delete Category with id=" + id
-//         });
-//       });
-//   };
-
 const getMyPublications = async (req, res) => {
   try {
     let publications = await models.Publication.findAll({
@@ -128,8 +99,6 @@ const getMyPublications = async (req, res) => {
     });
   }
 };
-
-
 
 const getAllPublications = async (req, res) => {
   try {

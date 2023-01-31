@@ -19,7 +19,7 @@ router.patch("/delete", destroyUser);
 //User access privileges
 
 router.get("/profile/:email", authMiddleware, getMyProfile);
-router.patch("/update", authMiddleware, updateUser);
+router.patch("/update/:id",authMiddleware, updateUser);
 router.post("/register", userRegister);
 
 module.exports = router;

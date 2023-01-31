@@ -14,8 +14,6 @@ const getAllContracts = async (req, res) => {
 };
 
 const createContract = async (req, res) => {
- 
-
   try {
     const contract = req.body;
     const newContract = await models.Contract.create({
@@ -37,18 +35,13 @@ const createContract = async (req, res) => {
 };
 
 const getContractById = async (req, res) => {
-
   let id = req.params.id;
-
   try {
-    const contracts = await models.Contract.findAll(
-      {
-        where: {
-          userid: id
-        }
-      }
-    );
-
+    const contracts = await models.Contract.findAll({
+      where: {
+        userid: id,
+      },
+    });
     res.send(contracts);
   } catch (error) {
     console.error(error);
@@ -56,25 +49,20 @@ const getContractById = async (req, res) => {
       error: error.message,
     });
   }
-
-}
+};
 
 const destroyContract = async (req, res) => {
-
   let id = req.params.id;
 
   try {
-    const contracts = await models.Contract.destroy(
-      {
-        where: {
-          id: id
-        }
-      }
-    );
-    if(contracts){
+    const contracts = await models.Contract.destroy({
+      where: {
+        id: id,
+      },
+    });
+    if (contracts) {
       res.send("Contrado eliminado correctamente");
-
-    }else {
+    } else {
       res.send("No se ha podido eliminar el contrato");
     }
   } catch (error) {
@@ -83,11 +71,11 @@ const destroyContract = async (req, res) => {
       error: error.message,
     });
   }
-}
+};
 
 module.exports = {
   getAllContracts,
   createContract,
   getContractById,
-  destroyContract
+  destroyContract,
 };

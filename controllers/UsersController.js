@@ -40,36 +40,62 @@ const getMyProfile = async (req, res) => {
 };
 
 // Role:User-Update profile
+// const updateUser = async (req, res) => {
+//   const user = req.body;
+//   const userTarget = await models.User.findOne({
+//     where: {
+//       email: req.auth.email,
+//     },
+//   });
+
+//   delete user.email;
+//   let newPassword = userTarget.password;
+//   if (user.password) {
+//     newPassword = encryptPasswordService(user.password);
+//   }
+
+//   let resp = await models.User.update(
+//     {
+//       name: user.name,
+//       nickname: user.nickname,
+//       password: newPassword,
+//     },
+//     {
+//       where: { email: req.auth.email },
+//     }
+//   );
+//   res.json({
+//     resp,
+//     message: "Updated User",
+//   });
+// };
+
 const updateUser = async (req, res) => {
-  const user = req.body;
-  const userTarget = await models.User.findOne({
-    where: {
-      email: req.auth.email,
-    },
-  });
-
-  delete user.email;
-  let newPassword = userTarget.password;
-  if (user.password) {
-    newPassword = encryptPasswordService(user.password);
+  try {
+    const user = req.body;
+    console.log(user, "holasss")
+    await models.User.update(
+      {
+        nickname: user.nickname,
+        name: user.name,
+        surname: user.surname,
+      },
+      {
+        where: {
+          id: user.id,
+        },
+      }
+    );
+    res.json({
+      message: "User updated!!",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
   }
-
-  let resp = await models.User.update(
-    {
-      name: user.name,
-      nickname: user.nickname,
-      password: newPassword,
-    },
-    {
-      where: { email: req.auth.email },
-    }
-  );
-  res.json({
-    resp,
-    message: "Updated User",
-  });
 };
-
 //Role:Admin-Delete user
 
 const destroyUser = async (req, res) => {
