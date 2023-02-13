@@ -21,15 +21,6 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// const getAllDeletedUsers = async (req,res) => {
-//     let resp = await models.User.findAll ({
-//         where: {
-//             deleted: true,
-//         },
-//     });
-//     res.send(resp);
-// };
-
 // Role:User-My data Profile
 const getMyProfile = async (req, res) => {
   let { email } = req.params;
@@ -39,41 +30,10 @@ const getMyProfile = async (req, res) => {
   res.send(resp);
 };
 
-// Role:User-Update profile
-// const updateUser = async (req, res) => {
-//   const user = req.body;
-//   const userTarget = await models.User.findOne({
-//     where: {
-//       email: req.auth.email,
-//     },
-//   });
-
-//   delete user.email;
-//   let newPassword = userTarget.password;
-//   if (user.password) {
-//     newPassword = encryptPasswordService(user.password);
-//   }
-
-//   let resp = await models.User.update(
-//     {
-//       name: user.name,
-//       nickname: user.nickname,
-//       password: newPassword,
-//     },
-//     {
-//       where: { email: req.auth.email },
-//     }
-//   );
-//   res.json({
-//     resp,
-//     message: "Updated User",
-//   });
-// };
-
 const updateUser = async (req, res) => {
   try {
     const user = req.body;
-    console.log(user, "holasss")
+    console.log(user, "holasss");
     await models.User.update(
       {
         nickname: user.nickname,
@@ -146,7 +106,6 @@ const userRegister = async (req, res) => {
 
 module.exports = {
   getAllUsers,
-
   destroyUser,
   getMyProfile,
   updateUser,
