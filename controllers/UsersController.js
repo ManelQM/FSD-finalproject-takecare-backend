@@ -58,13 +58,35 @@ const updateUser = async (req, res) => {
 };
 //Role:Admin-Delete user
 
+// const destroyUser = async (req, res) => {
+//   const { email } = req.body;
+//   let resp = await models.User.destroyer(
+//     { deleted: true },
+//     { where: { email: email } }
+//   );
+//   res.json({ resp, message: "Deleted user!" });
+// };
+
 const destroyUser = async (req, res) => {
-  const { email } = req.body;
-  let resp = await models.User.destroyer(
-    { deleted: true },
-    { where: { email: email } }
-  );
-  res.json({ resp, message: "Deleted user!" });
+  let id = req.params.id;
+
+  try {
+    const users = await models.User.destroy({
+      where: {
+        id: id,
+      },
+    });
+    if (users) {
+      res.send("Deleted user");
+    } else {
+      res.send("Cant delete user");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
+  }
 };
 
 const userRegister = async (req, res) => {
