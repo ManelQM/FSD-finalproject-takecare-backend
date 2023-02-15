@@ -14,9 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "idrole",
       });
       User.hasMany(models.Publication, {
+        constraints: false,
         foreignKey: "userid",
       });
       User.hasMany(models.Contract, {
+        constraints: false, 
         foreignKey: "userid",
       });
       // User.belongsToMany(models.Services, {through:'Contract'});

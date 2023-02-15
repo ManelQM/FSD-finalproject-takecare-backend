@@ -42,5 +42,6 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("Publications");
+    await queryInterface.removeColumn('userid')
   },
 };

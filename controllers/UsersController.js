@@ -60,7 +60,7 @@ const updateUser = async (req, res) => {
 
 // const destroyUser = async (req, res) => {
 //   const { email } = req.body;
-//   let resp = await models.User.destroyer(
+//   let resp = await models.User.destroy(
 //     { deleted: true },
 //     { where: { email: email } }
 //   );
@@ -69,7 +69,6 @@ const updateUser = async (req, res) => {
 
 const destroyUser = async (req, res) => {
   let id = req.params.id;
-
   try {
     const users = await models.User.destroy({
       where: {

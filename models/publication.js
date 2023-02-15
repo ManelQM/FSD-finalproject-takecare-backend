@@ -10,9 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Publication.belongsTo(models.User, {
+        constraints: false,
         foreignKey: "userid",
       });
       Publication.hasMany(models.Contract, {
+        constraints: false,
         foreignKey: "publicationid",
       });
     }
