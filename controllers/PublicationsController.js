@@ -53,9 +53,11 @@ const updateMyPublication = async (req, res) => {
 const deletePublication = async (req, res) => {
   try {
     const publicationId = req.body.id;
+    // const userid = req.params.userid;
     const publication = await models.Publication.findOne({
       where: {
         id: publicationId,
+        // userid: userid
       },
     });
     if (publication.id !== req.body.id) {
