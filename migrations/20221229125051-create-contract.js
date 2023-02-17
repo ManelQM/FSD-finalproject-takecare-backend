@@ -16,7 +16,7 @@ module.exports = {
           model: "Users",
           key: "id",
         },
-        onUpdate: 'CADSCADE',
+        onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
       publicationid: {
