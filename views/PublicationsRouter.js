@@ -14,6 +14,6 @@ router.get("/allpublications", getAllPublications);
 router.post("/newpublication", createPublication);
 router.patch("/updatepublication/:id", updateMyPublication);
 router.delete("/delete/:id", deletePublication);
-router.get("/mypublications", getMyPublications);
+router.get("/mypublications/:id", getMyPublications);
 
 module.exports = router;
