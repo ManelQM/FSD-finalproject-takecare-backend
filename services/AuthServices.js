@@ -77,6 +77,17 @@ const bcryptCompare = async (password, hashedPassword) => {
   return passCompare;
 };
 
+const adminPrivileges = async (req,res,next) => {
+  const {privileges} = req.headers;
+  const [action, jwt] = privileges.split("");
+  const payload = jsonwebtoken.verify (jwt, process.env.JWT_SECRET);
+  if (payload.idrole === 1) {
+    next();
+  } else {
+    res.status(403).json({message: "Access Denied"});
+  }
+}
+
 module.exports = {
   assertValidPasswordService,
   assertEmailIsValidService,
@@ -84,4 +95,5 @@ module.exports = {
   encryptPasswordService,
   createUserService,
   bcryptCompare,
+  adminPrivileges
 };
