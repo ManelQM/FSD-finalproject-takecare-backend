@@ -65,7 +65,7 @@ const destroyUser = async (req, res) => {
         id: id,
       },
     });
-    if (users == 1) {
+    if (users === 1) {
       res.send("Deleted user");
     } else {
       res.send("Cant delete user");

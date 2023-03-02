@@ -91,8 +91,8 @@ const bcryptCompare = async (password, hashedPassword) => {
 
 const adminPrivileges = (role) => (req, res, next) => {
   if (req.auth?.role === role) {
-    console.log(req.auth, "death metal")
     next();
+    console.log(res, "hola")
   } else {
     res.status(403).json({ message: "You dont have this privilege, sorry :(" });
   }
