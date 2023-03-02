@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const authMiddleware = require("../middlewares/authMiddleware");
-const adminPrivileges = require("../middlewares/authMiddleware"); 
+const {adminPrivileges} = require("../services/AuthServices")
 const {
   getAllUsers,
   destroyUser,
@@ -14,7 +14,7 @@ const {
 // Admin access privileges
 
 router.get("/all",adminPrivileges, getAllUsers); 
-router.delete("/delete/:id",adminPrivileges, destroyUser);
+router.delete("/delete/:id",adminPrivileges(1), destroyUser);
 
 //User access privileges
 

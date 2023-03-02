@@ -56,16 +56,6 @@ const updateUser = async (req, res) => {
     });
   }
 };
-//Role:Admin-Delete user
-
-// const destroyUser = async (req, res) => {
-//   const { email } = req.body;
-//   let resp = await models.User.destroy(
-//     { deleted: true },
-//     { where: { email: email } }
-//   );
-//   res.json({ resp, message: "Deleted user!" });
-// };
 
 const destroyUser = async (req, res) => {
   let id = req.params.id;

@@ -1,6 +1,7 @@
 const models = require("../models/index");
 const bcrypt = require("bcrypt");
 const auth = require("../config/auth");
+const jsonwebtoken = require("jsonwebtoken");
 
 // Service to assert if the structure of the password is ok
 const assertValidPasswordService = (pass) => {
@@ -77,16 +78,25 @@ const bcryptCompare = async (password, hashedPassword) => {
   return passCompare;
 };
 
-const adminPrivileges = async (req,res,next) => {
-  const {privileges} = req.headers;
-  const [action, jwt] = privileges.split("");
-  const payload = jsonwebtoken.verify (jwt, process.env.JWT_SECRET);
-  if (payload.idrole === 1) {
+// const adminPrivileges = async (req,res,next) => {
+//   const {authorization} = req.headers;
+//   const [action, jwt] = authorization.split("");
+//   const payload = jsonwebtoken.verify (jwt, process.env.ACCESS_TOKEN_SECRET);
+//   if (payload.idrole === 1) {
+//     next();
+//   } else {
+//     res.status(403).json({message: "Access Denied"});
+//   }
+// }
+
+const adminPrivileges = (role) => (req, res, next) => {
+  if (req.auth?.role === role) {
+    console.log(req.auth, "death metal")
     next();
   } else {
-    res.status(403).json({message: "Access Denied"});
+    res.status(403).json({ message: "You dont have this privilege, sorry :(" });
   }
-}
+};
 
 module.exports = {
   assertValidPasswordService,
