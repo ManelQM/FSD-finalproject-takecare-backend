@@ -6,7 +6,6 @@ module.exports = (req, res, next) => {
     res.status(401).json({ msg: "Access denied" });
   } else {
     let token = req.headers.authorization.split(" ")[1];
-
     jwt.verify(token, authConfig.secret, (err, decoded) => {
       if (err) {
         res.status(500).json({ msg: "Error during token decodification", err });

@@ -13,7 +13,7 @@ const {
 
 // Admin access privileges
 
-router.get("/all",adminPrivileges, getAllUsers); 
+router.get("/all",adminPrivileges(1), getAllUsers); 
 router.delete("/delete/:id",adminPrivileges(1), destroyUser);
 
 //User access privileges
