@@ -90,10 +90,12 @@ const bcryptCompare = async (password, hashedPassword) => {
 // }
 
 const adminPrivileges = (role) => (req, res, next) => {
-  console.log ("req.auth:", req.auth);
+  console.log ("JWT:", req.headers.authorization);
   // console.log ("role:", role); 
   // console.log ("req:", req );
-  if (req.auth?.role === role) {
+if (req.auth && req.auth?.role === role) { 
+
+  // if (req.user?.role === role) {
     next();
     console.log(req.auth, "hola")
   } else {
@@ -101,6 +103,14 @@ const adminPrivileges = (role) => (req, res, next) => {
   }
 };
 
+const isValidUser = (email) => async (req,res,next) => {
+  email = req.auth.email;
+  if(req.auth?.email === email) {
+    next();
+  } else {
+    res.status(403).json ({ message: "You dont have this privilege, sorry :(" });
+  }
+};
 module.exports = {
   assertValidPasswordService,
   assertEmailIsValidService,
@@ -108,5 +118,6 @@ module.exports = {
   encryptPasswordService,
   createUserService,
   bcryptCompare,
-  adminPrivileges
+  adminPrivileges, 
+  isValidUser
 };

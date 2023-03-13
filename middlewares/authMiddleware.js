@@ -11,6 +11,7 @@ module.exports = (req, res, next) => {
         res.status(500).json({ msg: "Error during token decodification", err });
       } else {
         req.user = decoded;
+        console.log("decoded:",decoded)
         next();
       }
     });
